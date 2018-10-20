@@ -134,3 +134,12 @@ Testing by end user. Testing with respect to user needs, requirements, and busin
 Sometimes known as business user testing
 
 - Testing by a legit person
+
+
+
+## Exhaustive testing
+
+Not practical as it requires an massive/ infinite amount of test data.
+
+Test cases should be **Efficient and Effective**
+
