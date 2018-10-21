@@ -135,11 +135,54 @@ Sometimes known as business user testing
 
 - Testing by a legit person
 
-
+# Test case design
 
 ## Exhaustive testing
 
 Not practical as it requires an massive/ infinite amount of test data.
 
 Test cases should be **Efficient and Effective**
+
+## Positive and negative test cases
+A positive test case is when the test is designed to produce an expected/valid behavior. A negative test case is designed to produce a behavior that indicates an invalid/unexpected situation, such as an error message.
+
+## Black box vs Glass box
+
+- Black-box (aka specification-based or responsibility-based) approach: test cases are designed exclusively based on the SUT’s specified external behavior.
+
+- White-box (aka glass-box or structured or implementation-based) approach: test cases are designed based on what is known about the SUT’s implementation, i.e. the code.
+
+- Gray-box approach: test case design uses some important information about the implementation. For example, if the implementation of a sort operation uses different algorithms to sort lists shorter than 1000 items and lists longer than 1000 items, more meaningful test cases can then be added to verify the correctness of both algorithms.
+
+
+## Equivalence partitiion
+A **group** of test inputs that are likely to be processed by the SUT in the same way. eg. 0...INT_MIN (-ve numbers), 1...INT_MAX, specified range for the function
+
+- **avoid testing too many inputs from one partition**. Testing too many inputs from the same partition is unlikely to find new bugs. This increases the efficiency of testing by reducing redundant test cases.
+
+- **ensure all partitions are tested**. Missing partitions can result in bugs going unnoticed. This increases the effectiveness of testing by increasing the chance of finding bugs.
+
+```
+Consider the method duplicate(String s, int n): String which returns a String that contains s repeated n times.
+
+Example EPs for s:
+
+zero-length strings
+string containing whitespaces
+...
+Example EPs for n:
+
+0
+negative values
+...
+```
+
+
+## Boundary Value Analysis
+design heuristic that is based on the observation that bugs often result from **incorrect handling of boundaries** of equivalence partitions.  
+
+BVA suggests that when picking test inputs from an equivalence partition, values near boundaries (i.e. boundary values) are more likely to find bugs.
+
+- eg. if upper bound is 10 we should test 9 and 11 as well
+
 
