@@ -9,6 +9,11 @@ A library is a collection of modular code that is general and can be used by oth
 
 The overall structure and execution flow of a specific category of software systems can be very similar. The similarity is an opportunity to reuse at a high scale.
 
+- Bootstrap
+- React
+
+You design your code according to their specs. They will call you
+
 ### Frameworks vs Libraries
 
 - Libraries are meant to be used **‘as is’** while frameworks are meant to be customized/extended.  e.g., writing plugins for Eclipse so that it can be used as an IDE for different languages (C++, PHP, etc.), adding modules and themes to Drupal, and adding test cases to JUnit.
@@ -19,6 +24,4 @@ The overall structure and execution flow of a specific category of software syst
 
 A platform provides a runtime environment for applications.
 
-- eg. iOS
-
-
+- eg. iOS, NodeJS, 
