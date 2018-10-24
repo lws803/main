@@ -6,3 +6,8 @@ Components need to access functionality deep inside other components.
 
 
 Something like a handler which handles request and processes it in the backend
+
+eg. ModelManager in AB4
+
+Cons: 
+- More complexities within the facade class
