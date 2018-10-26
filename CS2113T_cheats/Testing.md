@@ -149,13 +149,13 @@ A positive test case is when the test is designed to produce an expected/valid b
 ## Black box vs Glass box
 
 - Black-box (aka specification-based or responsibility-based) approach: test cases are designed exclusively based on the SUT’s specified external behavior.
-(cannot see the implementation inside)
+(cannot see the implementation inside)  
+eg. Creating test cases based on user guide, we only know the expected outcome we dont need need to know the components that make it up.
 
 - White-box (aka glass-box or structured or implementation-based) approach: test cases are designed based on what is known about the SUT’s implementation, i.e. the code.
 
 - Gray-box approach: test case design uses some important information about the implementation. For example, if the implementation of a sort operation uses different algorithms to sort lists shorter than 1000 items and lists longer than 1000 items, more meaningful test cases can then be added to verify the correctness of both algorithms.
 
-- Glass box approach: Can see the implementation inside
 
 ## Equivalence partitiion
 A **group** of test inputs that are likely to be processed by the SUT in the same way. eg. 0...INT_MIN (-ve numbers), 1...INT_MAX, specified range for the function
