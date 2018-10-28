@@ -188,3 +188,15 @@ BVA suggests that when picking test inputs from an equivalence partition, values
 - eg. if upper bound is 10 we should test 9 and 11 as well
 
 
+## Test heuristics (Combining test inputs)
+- All combinations - generate test cases for each unique combination of test inputs (WARNING: Can be very large)
+- At least once (eg. Each Valid Input at Least Once in a Positive Test Case, no more than one invalid input in a test case) - include each test input at least once
+- All pairs - This strategy creates test cases so that for any **given pair** of inputs, all combinations between them are tested. It is based on the observations that a bug is rarely the result of more than two interacting factors. The resulting number of test cases is lower than the "all combinations" strategy, but higher than the "at least once" approach.
+- Random - This strategy generates test cases using one of the other strategies and then pick a subset randomly (presumably because the original set of test cases is too big).
+- There are other strategies that can be used
+- Others - There are other strategies that can be used
+
+Note: It is better to have only one invalid test input per test entry (and the rest will be valid test inputs) for positive testing. This is so that we will know what is the cause of the assertTrue failure.
+
+
+
