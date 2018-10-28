@@ -6,7 +6,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -20,6 +23,8 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.autocomplete.CommandCompleter;
 import seedu.address.model.autocomplete.TextPrediction;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Activity;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.XmlAddressBookStorage;
 
@@ -209,5 +214,57 @@ public class ModelManager extends ComponentManager implements Model {
         } catch (DataConversionException dataE) {
             logger.warning(dataE.getMessage());
         }
+    }
+
+    //@@author LowGinWee
+
+    /**
+     * Get a list of unique tags of all persons in the addressbook
+     * @return a list of unique tags.
+     */
+    @Override
+    public List<Tag> getUniqueTagList() {
+        return versionedAddressBook.getUniqueTagList();
+    }
+    /**
+     * Adds an activity to the schedule in the address book.
+     */
+    @Override
+    public void addActivity(Activity activity) {
+        versionedAddressBook.addActivity(activity);
+        indicateAddressBookChanged();
+    }
+    /**
+     * Deletes an activity from the schedule in the address book.
+     */
+    @Override
+    public void deleteActivity(Activity activity) {
+        versionedAddressBook.deleteActivity(activity);
+        indicateAddressBookChanged();
+    }
+    /**
+     * Replaces the given activity {@code target} with {@code editedActivity}.
+     * {@code target} must exist in the address book.
+     */
+    @Override
+    public void updateActivity(Activity target, Activity editedActivity) {
+        versionedAddressBook.updateActivity(target, editedActivity);
+        indicateAddressBookChanged();
+    }
+    /**
+     * Get the sorted list of activities in the schedule.
+     * @return the list of activities.
+     */
+    @Override
+    public ObservableList<Activity> getActivityList() {
+        return versionedAddressBook.getActivityList();
+    }
+    /**
+     * Get a TreeMap with the Date of activities as its key and a list of the corresponding activities as its value.
+     * @return TreeMap of dates and activity lists.
+     */
+    @Override
+    public TreeMap<Date, ArrayList<Activity>> getSchedule() {
+        return versionedAddressBook.getSchedule();
     }
 }

@@ -1,11 +1,16 @@
 package seedu.address.model;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.autocomplete.TextPrediction;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Activity;
+import seedu.address.model.tag.Tag;
 
 /**
  * The API of the Model component.
@@ -102,4 +107,32 @@ public interface Model {
      * Reinitialises the address book
      */
     void reinitAddressbook ();
+
+    //@@author LowGinWee
+    List<Tag> getUniqueTagList();
+
+    /**
+     * Adds an activity to the schedule in the address book.
+     */
+    void addActivity(Activity activity);
+    /**
+     * Deletes an activity from the schedule in the address book.
+     */
+    void deleteActivity(Activity activity);
+    /**
+     * Replaces the given activity {@code target} with {@code editedActivity}.
+     * {@code target} must exist in the address book.
+     */
+    void updateActivity(Activity target, Activity editedActivity);
+    /**
+     * Get the sorted list of activities in the schedule.
+     * @return the list of activities.
+     */
+    ObservableList<Activity> getActivityList();
+    /**
+     * Get a TreeMap with the Date of activities as its key and a list of the corresponding activities as its value.
+     * @return TreeMap of dates and activity lists.
+     */
+    TreeMap<Date, ArrayList<Activity>> getSchedule();
+
 }
