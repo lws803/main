@@ -57,5 +57,3 @@ Note: The daily scrum meeting is not used as a problem-solving or issue resoluti
 
 - XP has a set of simple rules. XP is a lot like a jig saw puzzle with many small pieces. Individually the pieces make no sense, but when combined together a complete picture can be seen. This flow chart shows how Extreme Programming's rules work together.
 
-
-

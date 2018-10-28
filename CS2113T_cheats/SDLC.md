@@ -15,7 +15,11 @@ The sequential model, also called the waterfall model, models software developme
 ## Pros and cons
 - Pros: This could be a useful model when the problem statement that is well-understood and stable.
 
-- Cons: The major problem with this model is that requirements of a real-world project are rarely well-understood at the beginning and keep changing over time
+- Cons: The major problem with this model is that requirements of a real-world project are rarely well-understood at the beginning and **keep changing** over time
+
+
+## Sequential vs Iterative
+- It organises based on activities rather than functionality
 
 
 # Iterative Models
@@ -26,7 +30,6 @@ Each of the iterations could potentially go through all the development stages, 
   
   
 In this model, each of the iterations produces a new version of the product. Feedback on the version can then be fed to the next iteration.
-
 ## The iterative model can take a breadth-first or a depth-first approach to iteration planning.
 
 - breadth-first: an iteration evolves all major components in parallel.
@@ -34,8 +37,20 @@ In this model, each of the iterations produces a new version of the product. Fee
 
 Note: Most projects use a combination of both and can sometimes be called as 'iterative and incremental approach'
 
+## Pros and cons
 
-# Unified Process
+- Pros: Will not overshoot deadlines, can adapt better to customer demands, less costly
+
+- Cons: Harder to gauge and monitor progress
+
+
+## Agile model
+
+Refer to AGILE.md
+
+
+
+## Unified Process
 
 The unified process is developed by the Three Amigos - Ivar Jacobson, Grady Booch and James Rumbaugh (the creators of UML). The unified process consists of four phases: inception, elaboration, construction and transition.  
 
@@ -65,7 +80,7 @@ Note: Unified process is a flexible and customizable process model framework rat
 - Familiarize end users with the system
 
 
-# CMMI (Capability Maturity Model Integration)
+## CMMI (Capability Maturity Model Integration)
 
 CMMI provides organizations with the essential elements of effective processes, which will improve their performance.
 
