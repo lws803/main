@@ -8,13 +8,19 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.FRIENDS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.PersonBuilder;
+
+
 
 public class UniqueTagListTest {
     @Rule
@@ -140,6 +146,35 @@ public class UniqueTagListTest {
         expectedUniqueTagList.add(BOB);
         uniqueTagList.setTags(expectedUniqueTagList.asUnmodifiableObservableMap());
         assertEquals(expectedUniqueTagList, uniqueTagList);
+    }
+
+
+    @Test
+    public void getPersons_tagNotInList_throwsTagNotFoundException() {
+        thrown.expect(TagNotFoundException.class);
+        uniqueTagList.getPersons(FRIENDS);
+    }
+
+    @Test
+    public void getPersons_validTags_returnsUniquePersonList() {
+        uniqueTagList.add(ALICE);
+        UniquePersonList expectedPersonList = new UniquePersonList();
+        expectedPersonList.add(ALICE);
+        assertEquals(expectedPersonList.getPersons(), uniqueTagList.getPersons(FRIENDS));
+    }
+
+    @Test
+    public void getUnqiueTagList_noTagInList_throwsTagNotFoundException() {
+        thrown.expect(TagNotFoundException.class);
+        uniqueTagList.getUniqueTagList();
+    }
+
+    @Test
+    public void getUnqiueTagList_validTags_returnsTagList() {
+        uniqueTagList.add(FRIENDS);
+        List<Tag> expectedTagList = new ArrayList<>();
+        expectedTagList.add(FRIENDS);
+        assertEquals(expectedTagList, uniqueTagList.getUniqueTagList());
     }
 
     @Test
