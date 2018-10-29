@@ -6,7 +6,7 @@ https://ci.appveyor.com/project/lws803/main[image:https://ci.appveyor.com/api/pr
 https://coveralls.io/github/CS2113-AY1819S1-W12-3/main?branch=master[image:https://coveralls.io/repos/github/CS2113-AY1819S1-W12-3/main/badge.svg?branch=master[Coverage Status]]
 //https://gitter.im/se-edu/Lobby[image:https://badges.gitter.im/se-edu/Lobby.svg[Gitter chat]]
 
-ifndef::env-github[]
+ifdef::env-github[]
 image::docs/images/Ui.png[width="600"]
 endif::[]
 
