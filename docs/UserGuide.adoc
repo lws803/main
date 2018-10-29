@@ -121,6 +121,7 @@ Format: `find PREFIX KEYWORD [MORE_KEYWORDS]`
 * You can search by name, email, address, key performance index, position, phone number and tags
 * Partial words or words with typos will be matched too eg. 'Hangs' will be matched to 'Hans'
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Finding with a keyword that yields no matches may result in address book displaying all contacts rather than 0 results
 ****
 
 Examples:
