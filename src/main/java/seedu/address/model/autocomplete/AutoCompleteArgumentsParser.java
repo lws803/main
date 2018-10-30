@@ -40,9 +40,6 @@ public class AutoCompleteArgumentsParser {
             return getFindParserPair(arguments, argMultimap);
         case COMMAND_LIST:
             return getListParserPair(arguments, argMultimap);
-        case COMMAND_SELECT:
-        case COMMAND_DELETE:
-        case COMMAND_IMPORT:
         case COMMAND_MAIL:
             return getMailParserPair(arguments, argMultimap);
         default:

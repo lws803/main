@@ -35,6 +35,7 @@ public class CommandCompleter implements TextPrediction {
     private Trie emailTrie;
     private Trie addressTrie;
     private Trie tagTrie;
+    private Trie filenameTrie;
 
     /**
      * Word lists of strings used to instantiate Trie objects.
@@ -45,6 +46,7 @@ public class CommandCompleter implements TextPrediction {
     private ArrayList<String> emailList;
     private ArrayList<String> addressList;
     private ArrayList<String> tagList;
+    private ArrayList<String> filenameList;
 
     /**
      * Creates a command completer with the {@code model} data.
@@ -59,6 +61,7 @@ public class CommandCompleter implements TextPrediction {
         this.emailList = new ArrayList<>();
         this.addressList = new ArrayList<>();
         this.tagList = new ArrayList<>();
+        this.filenameList = new ArrayList<>();
         initLists();
         initTries();
     }
@@ -102,14 +105,12 @@ public class CommandCompleter implements TextPrediction {
      * Initialises attributes words lists with attribute value in each {@code Person}.
      */
     private void initAttributesLists() {
-        // TODO: prevent duplicates from being added to lists
         ObservableList<Person> list = model.getAddressBook().getPersonList();
         for (Person item : list) {
             nameList.add(item.getName().fullName);
             phoneList.add(item.getPhone().value);
             emailList.add(item.getEmail().value);
             addressList.add(item.getAddress().value);
-            // TODO: find a better way to do this
             for (Tag tag : item.getTags()) {
                 tagList.add(tag.toString());
             }
