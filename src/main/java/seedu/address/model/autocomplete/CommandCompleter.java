@@ -164,7 +164,6 @@ public class CommandCompleter implements TextPrediction {
         phoneTrie.insert(person.getPhone().value);
         emailTrie.insert(person.getEmail().value);
         addressTrie.insert(person.getAddress().value);
-        // TODO: find a better way to do this
         for (Tag tag : person.getTags()) {
             tagTrie.insert(tag.toString());
         }
@@ -204,7 +203,7 @@ public class CommandCompleter implements TextPrediction {
      * @param editedPerson the new person.
      */
     @Override
-    public void editPerson(Person personToEdit, Person editedPerson, List<Tag> uniqueTagList) {
+    public void editPerson(Person personToEdit, Person editedPerson) {
         if (!personToEdit.getName().equals(editedPerson.getName())) {
             nameTrie.remove(personToEdit.getName().fullName);
             nameTrie.insert(editedPerson.getName().fullName);
@@ -223,9 +222,7 @@ public class CommandCompleter implements TextPrediction {
         }
         if (!personToEdit.getTags().equals(editedPerson.getTags())) {
             for (Tag tag : personToEdit.getTags()) {
-                if (!uniqueTagList.contains(tag)) {
-                    tagTrie.remove(tag.toString());
-                }
+                tagTrie.remove(tag.toString());
             }
             for (Tag tag : editedPerson.getTags()) {
                 tagTrie.insert(tag.toString());

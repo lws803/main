@@ -104,6 +104,13 @@ public interface Model {
     void removePersonFromPrediction(Person person);
 
     /**
+     * Edits a person's attributes in text prediction.
+     * @param personToEdit the original person to edit.
+     * @param editedPerson the edited version of original person.
+     */
+    void editPersonInPrediction(Person personToEdit, Person editedPerson);
+
+    /**
      * Clear all data in text prediction.
      */
     void clearInPrediction();

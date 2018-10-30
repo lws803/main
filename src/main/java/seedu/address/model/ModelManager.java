@@ -196,6 +196,15 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     /**
+     * Edits a person's attributes in text prediction.
+     * @param personToEdit the original person to edit.
+     * @param editedPerson the edited version of original person.
+     */
+    public void editPersonInPrediction(Person personToEdit, Person editedPerson) {
+        textPrediction.editPerson(personToEdit, editedPerson);
+    }
+
+    /**
      * Clear all data in text prediction.
      */
     public void clearInPrediction() {

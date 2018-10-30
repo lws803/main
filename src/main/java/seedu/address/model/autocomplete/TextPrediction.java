@@ -35,7 +35,7 @@ public interface TextPrediction {
      * @param personToEdit the original person.
      * @param editedPerson the new person.
      */
-    void editPerson(Person personToEdit, Person editedPerson, List<Tag> uniqueTagList);
+    void editPerson(Person personToEdit, Person editedPerson);
 
     /**
      * Removes all entries in all Trie instances
