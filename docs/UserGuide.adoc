@@ -315,7 +315,7 @@ opens your email application with person (3rd person in the list panel) as recip
 The Schedule feature helps you remember important activities by listing out important events and dates! +
 
 To add an activity to your schedule: +
-Format: `schedule`  `add` `d/DATE` `a/ACTIVITY` +
+Format: `schedule add d/DATE a/ACTIVITY` +
 ****
 * Date specified must be in the "DD/MM/YYYY" format. +
 * The activity name *must contain only* letters, numbers, spaces and fullstops.
