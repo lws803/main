@@ -170,22 +170,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     //@@author lekoook
-
-    /**
-     * Get the TextPrediction instance.
-     * @return the TextPrediction instance used for text prediction.
-     */
-    public TextPrediction getTextPrediction() {
-        return textPrediction;
-    }
-
     /**
      * Gets the prediction given a command input string.
      * @param input the command input string.
      * @return the list of predictions.
      */
     public ArrayList<String> predictText(String input) {
-        textPrediction.predictText(input);
+        return textPrediction.predictText(input);
     }
 
     /**

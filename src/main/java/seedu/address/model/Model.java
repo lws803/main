@@ -85,10 +85,33 @@ public interface Model {
 
     //@@author lekoook
     /**
-     * Get the TextPrediction instance.
-     * @return the TextPrediction instance used for text prediction.
+     * Gets the prediction given a command input string.
+     * @param input the command input string.
+     * @return the list of predictions.
      */
-    TextPrediction getTextPrediction();
+    ArrayList<String> predictText(String input);
+
+    /**
+     * Inserts a person's attributes into text prediction.
+     * @param person the person to insert.
+     */
+    void insertPersonIntoPrediction(Person person);
+
+    /**
+     * Removes a person's attributes from text prediction.
+     * @param person the person to remove.
+     */
+    void removePersonFromPrediction(Person person);
+
+    /**
+     * Clear all data in text prediction.
+     */
+    void clearInPrediction();
+
+    /**
+     * Reinitialise all text prediction data.
+     */
+    void reinitialisePrediction();
 
     /**
      * Initialises the list of selected Persons in address book.

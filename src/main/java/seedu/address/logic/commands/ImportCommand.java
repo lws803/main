@@ -56,7 +56,7 @@ public class ImportCommand extends Command {
             for (Person toAdd : personList) {
                 try {
                     model.addPerson(toAdd);
-                    model.getTextPrediction().insertPerson(toAdd);
+                    model.insertPersonIntoPrediction(toAdd);
                 } catch (DuplicatePersonException dup) {
                     // TODO: ask if continue is needed since cannot leave exception blank
                     continue;
