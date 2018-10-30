@@ -26,6 +26,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Activity;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.XmlAddressBookStorage;
 
 /**
@@ -234,7 +235,6 @@ public class ModelManager extends ComponentManager implements Model {
         return this.selectedPersons;
     }
 
-
     //@@author lws803
     /**
      * Reinitialises the address book
@@ -243,6 +243,16 @@ public class ModelManager extends ComponentManager implements Model {
     public void reinitAddressbook() {
         UserPrefs userPref = new UserPrefs();
         Path path = Paths.get(userPref.getAddressBookFilePath().toString());
+        replaceData(path);
+    }
+
+    //@@author lws803
+    /**
+     * Method to replace data for reinitAddressbook and restoreAddressbook
+     * @param path path of .xml file
+     */
+    @Override
+    public void replaceData(Path path) {
         XmlAddressBookStorage storage = new XmlAddressBookStorage(path);
         ReadOnlyAddressBook initialData;
         try {
@@ -255,8 +265,23 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
-    //@@author LowGinWee
+    //@@author Limminghong
+    /**
+     * Create a backup snapshot in the ".backup" folder
+     * @param path to the snapshot
+     */
+    @Override
+    public void backUpAddressbook(Path path) {
+        try {
+            ReadOnlyAddressBook initialData = versionedAddressBook;
+            AddressBookStorage backupStorage = new XmlAddressBookStorage(path);
+            backupStorage.saveAddressBook(initialData);
+        } catch (IOException io) {
+            logger.severe(io.getMessage());
+        }
+    }
 
+    //@@author LowGinWee
     /**
      * Get a list of unique tags of all persons in the addressbook
      * @return a list of unique tags.

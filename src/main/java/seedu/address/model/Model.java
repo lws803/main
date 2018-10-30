@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -136,7 +137,21 @@ public interface Model {
     /**
      * Reinitialises the address book
      */
-    void reinitAddressbook ();
+    void reinitAddressbook();
+
+    //@@author lws803
+    /**
+     * Method to replace data for reinitAddressbook and restoreAddressbook
+     * @param path path of .xml file
+     */
+    void replaceData(Path path);
+
+    //@@author Limminghong
+    /**
+     * Create a backup snapshot in the ".backup" folder
+     * @param path to the snapshot
+     */
+    void backUpAddressbook(Path path);
 
     //@@author LowGinWee
     List<Tag> getUniqueTagList();
@@ -164,5 +179,4 @@ public interface Model {
      * @return TreeMap of dates and activity lists.
      */
     TreeMap<Date, ArrayList<Activity>> getSchedule();
-
 }
