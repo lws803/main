@@ -175,15 +175,13 @@ public class CommandCompleter implements TextPrediction {
      * @param person the person to delete
      */
     @Override
-    public void removePerson(Person person, List<Tag> uniqueTagList) {
+    public void removePerson(Person person) {
         nameTrie.remove(person.getName().fullName);
         phoneTrie.remove(person.getPhone().value);
         emailTrie.remove(person.getEmail().value);
         addressTrie.remove(person.getAddress().value);
         for (Tag tag : person.getTags()) {
-            if (!uniqueTagList.contains(tag)) {
-                tagTrie.remove(tag.toString());
-            }
+            tagTrie.remove(tag.toString());
         }
     }
 

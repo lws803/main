@@ -27,7 +27,7 @@ public interface TextPrediction {
      * Deletes a Person's attributes from the respective Trie instances for auto complete
      * @param person the person to delete
      */
-    void removePerson(Person person, List<Tag> uniqueTagList);
+    void removePerson(Person person);
 
     /**
      * Edits a Person's attributes in each respective Trie instances for auto complete.
