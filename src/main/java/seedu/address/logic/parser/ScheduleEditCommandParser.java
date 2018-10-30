@@ -29,14 +29,9 @@ public class ScheduleEditCommandParser implements Parser<ScheduleEditCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_ACTIVITY) || argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
-
         Index index;
-        try {
-            index = Index.fromOneBased(Integer.parseInt(argMultimap.getPreamble().trim()));
-        } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
-        }
-        String task = argMultimap.getValue(PREFIX_ACTIVITY).get().trim();
+        index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        String task = ParserUtil.parseActivityName(argMultimap.getValue(PREFIX_ACTIVITY).get());
         return new ScheduleEditCommand(index, task);
     }
 
