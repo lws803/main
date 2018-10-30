@@ -50,8 +50,8 @@ public class Trie {
         // Check if this value exists
         if (!baseList.contains(value)) {
             insertToGraph(value);
-            baseList.add(value);
         }
+        baseList.add(value);
     }
 
     /**
@@ -94,10 +94,10 @@ public class Trie {
      * @param value the value to remove
      */
     public void remove(String value) {
+        baseList.remove(value);
         // Check if this value exists
-        if (baseList.contains(value)) {
+        if (!baseList.contains(value)) {
             removeFromGraph(value);
-            baseList.remove(value);
         }
     }
     /**
