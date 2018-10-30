@@ -1,12 +1,9 @@
 //@@author lekoook
 package seedu.address.model.autocomplete;
 
-import static seedu.address.logic.parser.CliSyntax.COMMAND_DELETE;
 import static seedu.address.logic.parser.CliSyntax.COMMAND_FIND;
-import static seedu.address.logic.parser.CliSyntax.COMMAND_IMPORT;
 import static seedu.address.logic.parser.CliSyntax.COMMAND_LIST;
 import static seedu.address.logic.parser.CliSyntax.COMMAND_MAIL;
-import static seedu.address.logic.parser.CliSyntax.COMMAND_SELECT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;

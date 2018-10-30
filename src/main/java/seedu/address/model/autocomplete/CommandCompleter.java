@@ -2,7 +2,6 @@
 package seedu.address.model.autocomplete;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.logic.parser.CliSyntax;

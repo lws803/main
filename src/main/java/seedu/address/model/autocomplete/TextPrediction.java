@@ -1,10 +1,8 @@
 package seedu.address.model.autocomplete;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
 
 /**
  * API of text prediction.
