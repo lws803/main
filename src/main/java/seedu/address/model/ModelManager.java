@@ -208,7 +208,7 @@ public class ModelManager extends ComponentManager implements Model {
     /**
      * Clear all data in text prediction.
      */
-    public void clearInPrediction() {
+        public void clearInPrediction() {
         textPrediction.clearData();
     }
 
