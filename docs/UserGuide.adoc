@@ -365,7 +365,7 @@ opens your email application with person (3rd person in the list panel) as recip
 
 The Schedule feature helps you remember important activities by listing out important events and dates! +
 
-To add an activity to your schedule: +
+*To add an activity to your schedule:* +
 Format: `schedule-add d/DATE a/ACTIVITY` +
 ****
 * Date specified must be in the "DD/MM/YYYY" format. +
@@ -374,7 +374,7 @@ Format: `schedule-add d/DATE a/ACTIVITY` +
 * Example: `schedule-add d/30/10/2018 a/Attend meeting with Alex.` +
 Adds activity "Attend meeting with Alex." on "30/10/2018" to your schedule. +
 
-To edit an activity from your schedule: +
+*To edit an activity from your schedule:* +
 Format: `schedule-edit INDEX a/ACTIVITY` +
 ****
 * Edits the activity at the specified `INDEX`.
@@ -386,7 +386,7 @@ Format: `schedule-edit INDEX a/ACTIVITY` +
 * Example: `schedule-edit 1 a/Attend meeting with Alexia.` +
 Edits activity name at `INDEX 1` to "Attend meeting with Alexia." in your schedule. +
 
-To delete an activity from your schedule: +
+*To delete an activity from your schedule:* +
 Format: `schedule-delete INDEX` +
 ****
 * Deletes the activity at the specified `INDEX`.
