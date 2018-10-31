@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.CommandHistory;
@@ -46,8 +48,8 @@ public class MailCommandTest {
         CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
     }
 
-    @Ignore
     @Test
+    @DisabledIfEnvironmentVariable(named = "TRAVIS", matches = "true")
     public void execute_allPersons_success() {
         MailCommand mailCommand = new MailCommand(TYPE_ALL);
 
