@@ -97,6 +97,10 @@ public class Trie {
      * @param value the value to remove
      */
     public void remove(String value) {
+        if (value == null || value.isEmpty()) {
+            return;
+        }
+
         baseList.remove(value);
         // Check if this value exists
         if (!baseList.contains(value)) {
