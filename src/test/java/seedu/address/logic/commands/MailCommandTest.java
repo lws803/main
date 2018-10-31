@@ -142,37 +142,9 @@ public class MailCommandTest {
             super(mailType);
         }
 
-        public MailCommandStubThrowsException(int mailType, String mailArgs) {
-            super(mailType, mailArgs);
-        }
-
         @Override
         public CommandResult execute(Model model, CommandHistory history) throws CommandException {
             throw new CommandException(MESSAGE_UNSUPPORTED);
         }
     }
-    /*
-    /**
-     * A MailCommand stub that runs successful without throwing CommandException
-     */
-    /*
-    private class MailCommandStubSuccess extends MailCommand {
-        public MailCommandStubSuccess(int mailType) {
-            super(mailType);
-        }
-
-        public MailCommandStubSuccess(int mailType, String mailArgs) {
-            super(mailType, mailArgs);
-        }
-
-        @Override
-        public CommandResult execute(Model model, CommandHistory history) throws CommandException {
-
-            ArrayList<Person> mailingList = mailToAll(model);
-            String recipients = buildRecipients(mailingList);
-
-            return new CommandResult(MESSAGE_SUCCESS + recipients);
-        }
-    }
-    */
 }
