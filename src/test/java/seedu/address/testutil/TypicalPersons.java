@@ -20,6 +20,7 @@ import java.util.List;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 
 /**
  * A utility class containing a list of {@code Person} objects to be used in tests.
@@ -132,9 +133,23 @@ public class TypicalPersons {
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
+    public static final Person ANNABELLE = new PersonBuilder()
+            .withName("Annabelle")
+            .withPhone("1968")
+            .withEmail("annabelle@warren.com")
+            .withAddress("Monroe, Connecticut")
+            .withPosition("ghost")
+            .withKpi("5")
+            .withNote("is a nightmare")
+            .withTags("scarer")
+            .build();
+
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
+    public static final Tag FRIENDS = new Tag("friends");
+
     private TypicalPersons() {} // prevents instantiation
+
 
     /**
      * Returns an {@code AddressBook} with all the typical persons.
