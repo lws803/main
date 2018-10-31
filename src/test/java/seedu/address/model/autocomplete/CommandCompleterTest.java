@@ -45,10 +45,16 @@ public class CommandCompleterTest {
 
         ArrayList<String> actualEmailPredictions = commandCompleter.predictText("find e/a");
         ArrayList<String> expectedEmailPredictions =
-                new ArrayList<>(Arrays.asList("lice@example.com ", "nna@example.com "));
+                new ArrayList<>(Arrays.asList("lice@example.com "));
 
         ArrayList<String> actualTagPredictions = commandCompleter.predictText("list t/f");
         ArrayList<String> expectedTagPredictions = new ArrayList<>(Arrays.asList("riends "));
+
+        ArrayList<String> actualPositionPredictions = commandCompleter.predictText("find r/M");
+        ArrayList<String> expectedPositionPredictions = new ArrayList<>(Arrays.asList("anager "));
+
+        ArrayList<String> actualKpiPredictions = commandCompleter.predictText("find k/3");
+        ArrayList<String> expectedKpiPredictions = new ArrayList<>(Arrays.asList("."));
 
         // Empty predictions
         ArrayList<String> actualEmptyPredictions = commandCompleter.predictText("exit ");
@@ -58,8 +64,10 @@ public class CommandCompleterTest {
         assertEquals(expectedNamePredictions, actualNamePredictions);
         assertEquals(expectedAddressPredictions, actualAddressPredictions);
         assertEquals(expectedPhonePredictions, actualPhonePredictions);
-        //assertEquals(expectedEmailPredictions, actualEmailPredictions);
+        assertEquals(expectedEmailPredictions, actualEmailPredictions);
         assertEquals(expectedTagPredictions, actualTagPredictions);
+        assertEquals(expectedPositionPredictions, actualPositionPredictions);
+        assertEquals(expectedKpiPredictions, actualKpiPredictions);
         assertEquals(expectedEmptyPredictions, actualEmptyPredictions);
     }
 
@@ -81,16 +89,100 @@ public class CommandCompleterTest {
 
         ArrayList<String> actualEmailPredictions = commandCompleter.predictText("find e/a");
         ArrayList<String> expectedEmailPredictions =
-                new ArrayList<>(Arrays.asList("lice@example.com", "nna@example.com", "nnabelle@warren.com"));
+                new ArrayList<>(Arrays.asList("lice@example.com ", "nnabelle@warren.com "));
 
         ArrayList<String> actualTagPredictions = commandCompleter.predictText("list t/s");
         ArrayList<String> expectedTagPredictions = new ArrayList<>(Arrays.asList("carer "));
 
+        ArrayList<String> actualPositionPredictions = commandCompleter.predictText("find r/M");
+        ArrayList<String> expectedPositionPredictions = new ArrayList<>(Arrays.asList("anager "));
+
+        ArrayList<String> actualKpiPredictions = commandCompleter.predictText("find k/3");
+        ArrayList<String> expectedKpiPredictions = new ArrayList<>(Arrays.asList("."));
+
         assertEquals(expectedNamePredictions, actualNamePredictions);
         assertEquals(expectedPhonePredictions, actualPhonePredictions);
         assertEquals(expectedAddressPredictions, actualAddressPredictions);
-        //assertEquals(expectedEmailPredictions, actualEmailPredictions);
+        assertEquals(expectedEmailPredictions, actualEmailPredictions);
         assertEquals(expectedTagPredictions, actualTagPredictions);
+        assertEquals(expectedPositionPredictions, actualPositionPredictions);
+        assertEquals(expectedKpiPredictions, actualKpiPredictions);
+    }
+
+    @Test
+    public void removePerson_returnCorrectPrediction() {
+        ModelStubWithDefaultPersons modelStubWithDefaultPersons = new ModelStubWithDefaultPersons();
+        CommandCompleter commandCompleter = new CommandCompleter(modelStubWithDefaultPersons);
+
+        commandCompleter.removePerson(TypicalPersons.ALICE);
+
+        ArrayList<String> actualNamePredictions = commandCompleter.predictText("find n/A");
+        ArrayList<String> expectedNamePredictions = new ArrayList<>();
+
+        ArrayList<String> actualPhonePredictions = commandCompleter.predictText("find p/9");
+        ArrayList<String> expectedPhonePredictions =
+                new ArrayList<>(Arrays.asList("482224 ", "482427 ", "8765432 ", "5352563 ", "667777 "));
+
+        ArrayList<String> actualAddressPredictions = commandCompleter.predictText("find a/1");
+        ArrayList<String> expectedAddressPredictions = new ArrayList<>(Arrays.asList("0th street "));
+
+        ArrayList<String> actualEmailPredictions = commandCompleter.predictText("find e/a");
+        ArrayList<String> expectedEmailPredictions = new ArrayList<>();
+
+        ArrayList<String> actualTagPredictions = commandCompleter.predictText("list t/f");
+        ArrayList<String> expectedTagPredictions = new ArrayList<>(Arrays.asList("riends "));
+
+        ArrayList<String> actualPositionPredictions = commandCompleter.predictText("find r/M");
+        ArrayList<String> expectedPositionPredictions = new ArrayList<>(Arrays.asList("anager "));
+
+        ArrayList<String> actualKpiPredictions = commandCompleter.predictText("find k/3");
+        ArrayList<String> expectedKpiPredictions = new ArrayList<>(Arrays.asList("."));
+
+        assertEquals(expectedNamePredictions, actualNamePredictions);
+        assertEquals(expectedPhonePredictions, actualPhonePredictions);
+        assertEquals(expectedAddressPredictions, actualAddressPredictions);
+        assertEquals(expectedEmailPredictions, actualEmailPredictions);
+        assertEquals(expectedTagPredictions, actualTagPredictions);
+        assertEquals(expectedPositionPredictions, actualPositionPredictions);
+        assertEquals(expectedKpiPredictions, actualKpiPredictions);
+    }
+
+    @Test
+    public void editPersons_returnCorrectPredictions() {
+        ModelStubWithDefaultPersons modelStubWithDefaultPersons = new ModelStubWithDefaultPersons();
+        CommandCompleter commandCompleter = new CommandCompleter(modelStubWithDefaultPersons);
+
+        commandCompleter.editPerson(TypicalPersons.ALICE, TypicalPersons.ANNABELLE);
+
+        ArrayList<String> actualNamePredictions = commandCompleter.predictText("find n/A");
+        ArrayList<String> expectedNamePredictions = new ArrayList<>(Arrays.asList("nnabelle "));
+
+        ArrayList<String> actualPhonePredictions = commandCompleter.predictText("find p/1");
+        ArrayList<String> expectedPhonePredictions = new ArrayList<>(Arrays.asList("968 "));
+
+        ArrayList<String> actualAddressPredictions = commandCompleter.predictText("find a/M");
+        ArrayList<String> expectedAddressPredictions = new ArrayList<>(Arrays.asList("onroe, Connecticut "));
+
+        ArrayList<String> actualEmailPredictions = commandCompleter.predictText("find e/a");
+        ArrayList<String> expectedEmailPredictions =
+                new ArrayList<>(Arrays.asList("nnabelle@warren.com "));
+
+        ArrayList<String> actualTagPredictions = commandCompleter.predictText("list t/s");
+        ArrayList<String> expectedTagPredictions = new ArrayList<>(Arrays.asList("carer "));
+
+        ArrayList<String> actualPositionPredictions = commandCompleter.predictText("find r/M");
+        ArrayList<String> expectedPositionPredictions = new ArrayList<>(Arrays.asList("anager "));
+
+        ArrayList<String> actualKpiPredictions = commandCompleter.predictText("find k/3");
+        ArrayList<String> expectedKpiPredictions = new ArrayList<>(Arrays.asList("."));
+
+        assertEquals(expectedNamePredictions, actualNamePredictions);
+        assertEquals(expectedPhonePredictions, actualPhonePredictions);
+        assertEquals(expectedAddressPredictions, actualAddressPredictions);
+        assertEquals(expectedEmailPredictions, actualEmailPredictions);
+        assertEquals(expectedTagPredictions, actualTagPredictions);
+        assertEquals(expectedPositionPredictions, actualPositionPredictions);
+        assertEquals(expectedKpiPredictions, actualKpiPredictions);
     }
 
     @Test
