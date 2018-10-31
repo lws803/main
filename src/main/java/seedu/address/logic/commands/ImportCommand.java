@@ -62,7 +62,7 @@ public class ImportCommand extends Command {
             for (Person toAdd : personList) {
                 try {
                     model.addPerson(toAdd);
-                    model.getTextPrediction().insertPerson(toAdd);
+                    model.insertPersonIntoPrediction(toAdd);
                 } catch (DuplicatePersonException dup) {
                     logger.info(DUPLICATE_PERSON);
                 }
