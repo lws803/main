@@ -47,7 +47,7 @@ public class MailCommandTest {
         CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     @DisabledIf("'true' == systemEnvironment.get('TRAVIS')")
     public void execute_allPersons_success() {
         MailCommand mailCommand = new MailCommand(TYPE_ALL);
