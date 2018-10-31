@@ -13,7 +13,7 @@ public class Trie {
     /**
      * Class constants
      */
-    private static final char CHAR_ROOT = '.';
+    private static final char CHAR_ROOT = '`';
     private static final char CHAR_SPACE = ' ';
 
     /**
