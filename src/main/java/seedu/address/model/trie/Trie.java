@@ -1,6 +1,8 @@
 //@@author lekoook
 package seedu.address.model.trie;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.ArrayList;
 
 /**
@@ -36,9 +38,8 @@ public class Trie {
      * Initialises the Trie instance with the items in baseList
      */
     private void init() {
-
         for (int i = 0; i < baseList.size(); i++) {
-            this.insertToGraph(baseList.get(i));
+            this.insert(baseList.get(i));
         }
     }
 
@@ -59,6 +60,10 @@ public class Trie {
      * @param keyString the string value to be inserted
      */
     private void insertToGraph(String keyString) {
+        if (keyString == null || keyString.isEmpty()) {
+            return;
+        }
+
         // A TrieNode as pointer to traverse through the tree
         TrieNode pointer = root;
 
