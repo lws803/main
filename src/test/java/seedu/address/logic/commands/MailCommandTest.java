@@ -16,6 +16,7 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.CommandHistory;
@@ -33,8 +34,8 @@ public class MailCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
-    @Ignore
-    @Test
+    @org.junit.jupiter.api.Test
+    @DisabledIfEnvironmentVariable(named = "CI", matches = "true")
     public void execute_selectedPersons_success() {
         MailCommand mailCommand = new MailCommand(TYPE_SELECTION);
 
@@ -58,8 +59,8 @@ public class MailCommandTest {
         CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
     }
 
-    @Ignore
-    @Test
+    @org.junit.jupiter.api.Test
+    @DisabledIfEnvironmentVariable(named = "CI", matches = "true")
     public void execute_selectedGroups_success() {
         Tag tagToUse = (Tag) model.getFilteredPersonList().get(0).getTags().toArray()[0];
         String tagToUseInString = tagToUse.toString();
