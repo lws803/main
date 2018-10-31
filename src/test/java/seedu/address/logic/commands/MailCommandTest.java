@@ -48,7 +48,7 @@ public class MailCommandTest {
     }
 
     @Test
-    @DisabledIfEnvironmentVariable(named = "TRAVIS", matches = "true")
+    @DisabledIfEnvironmentVariable(named = "CI", matches = "true")
     public void execute_allPersons_success() {
         MailCommand mailCommand = new MailCommand(TYPE_ALL);
 
