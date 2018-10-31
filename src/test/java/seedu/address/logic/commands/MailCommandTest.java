@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.CommandHistory;
@@ -48,7 +48,7 @@ public class MailCommandTest {
     }
 
     @Test
-    @DisabledIfEnvironmentVariable(named = "CI", matches = "true")
+    @DisabledIf("'true' == systemEnvironment.get('TRAVIS')")
     public void execute_allPersons_success() {
         MailCommand mailCommand = new MailCommand(TYPE_ALL);
 
