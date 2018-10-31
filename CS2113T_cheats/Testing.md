@@ -158,9 +158,12 @@ eg. Creating test cases based on user guide, we only know the expected outcome w
 
 
 ## Equivalence partitiion
+Grouping of test inputs
+  
+
 A **group** of test inputs that are likely to be processed by the SUT in the same way. eg. 0...INT_MIN (-ve numbers), 1...INT_MAX, specified range for the function
 
-- **avoid testing too many inputs from one partition**. Testing too many inputs from the same partition is unlikely to find new bugs. This increases the efficiency of testing by reducing redundant test cases.
+- **avoid testing too many inputs from one partition**. Testing too many inputs from the same partition is unlikely to find new bugs. This increases the efficiency of testing by reducing redundant test cases. (eg. testing a function which accepts only 1...10, and we test with 11, 12, 13. There's no need to test with 12 and 13 as it is already going to give the same output as testing 11)
 
 - **ensure all partitions are tested**. Missing partitions can result in bugs going unnoticed. This increases the effectiveness of testing by increasing the chance of finding bugs.
 
@@ -195,6 +198,10 @@ BVA suggests that when picking test inputs from an equivalence partition, values
 - Random - This strategy generates test cases using one of the other strategies and then pick a subset randomly (presumably because the original set of test cases is too big).
 - There are other strategies that can be used
 - Others - There are other strategies that can be used
+
+### Main ones to test
+1. Each valid input at least once
+2. Only one valid at a time
 
 Note: It is better to have only one invalid test input per test entry (and the rest will be valid test inputs) for positive testing. This is so that we will know what is the cause of the assertTrue failure.
 
