@@ -202,7 +202,7 @@ public class StringUtilTest {
     }
 
     @Test
-    public void isValidSelectSyntax_validFormat_returnCorrectBoolean() {
+    public void isValidMultipleIndexFormat_validFormat_returnCorrectBoolean() {
         assertTrue(StringUtil.isValidMultipleIndexFormat("1   2 3"));
         assertFalse(StringUtil.isValidMultipleIndexFormat("-1 2 3"));
         assertFalse(StringUtil.isValidMultipleIndexFormat("1 2 0 3"));

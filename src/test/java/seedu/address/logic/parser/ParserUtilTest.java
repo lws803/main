@@ -211,7 +211,7 @@ public class ParserUtilTest {
 
     //@@author lekoook
     @Test
-    public void parseSelectIndex_validInput_success() throws Exception {
+    public void parseIndices_validInput_success() throws Exception {
         // No white spaces, single Index
         assertEquals(INDEX_LIST_FIRST, ParserUtil.parseIndices("1"));
 
@@ -238,7 +238,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseSelectIndex_invalidInput_throwsParseException() throws Exception {
+    public void parseIndices_invalidInput_throwsParseException() throws Exception {
         thrown.expect(ParseException.class);
         // Non numeric
         ParserUtil.parseIndices("a");
