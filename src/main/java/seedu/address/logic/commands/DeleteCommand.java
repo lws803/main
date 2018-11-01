@@ -64,6 +64,11 @@ public class DeleteCommand extends Command {
         return new CommandResult(buildMessage(listOfPersonsToDelete));
     }
 
+    /**
+     * Builds the feedback message based on a list of deleted persons.
+     * @param deletedPersons the list of deleted persons.
+     * @return the feedback message to be shown.
+     */
     private String buildMessage(List<Person> deletedPersons) {
         StringBuilder output = new StringBuilder();
         for (Person person : deletedPersons) {
