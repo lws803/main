@@ -8,8 +8,9 @@
 ---
 
 == Overview
-
-CorpProC is an addressbook application which provides *you* with ease of access and increase in *your* productivity in the workplace. Users can interact with the addressbook using a command line interface and intuitive GUI create with JavaFX.
+CorpPro is an addressbook targeted for corporate users. + 
+It is the *RIGHT* way to manage your contacts. +
+CorpPro is powered by Java and provides an intuitive interface with high speed usage using a command line interface.
 
 == Summary of contributions
 
