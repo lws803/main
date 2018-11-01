@@ -20,12 +20,14 @@ CorpPro is powered by JavaFX and boasts an intuitive GUI (Graphical User Interfa
 ** Highlights: This feature uses a well-known cipher `PBEWithMD5AndDES` and `PBEKeySpec` which accepts the user's password. Once the file is encrypted, it will not be crackable unless done via brute forcing.
 ** Credits: Code snippet adapted from Esailija [https://stackoverflow.com/questions/13673556/using-password-based-encryption-on-a-file-in-java[Stack overflow]]
 
-* *Feature 2*: Implemented smart searching for find command.
+* *Feature 2*: Implemented smart searching for `find` command.
 ** What it does: Users can now search for the contacts they want by roughly specifying other traits/ attributes of the contacts. For example, users can
 search for contacts who live in Jurong West and are tagged as friends.
 ** Justification: Corporate users might need to gather rough statistics of their clients or know which worker(s) to contact and assign work.
 ** Highlights: This feature uses Levenshtein Distance to find the closest match for the keywords entered. It will then sort the matches based on how close it is to the keywords entered.
 After which, it will perform a set intersection on the various contacts to find the contact which meets all the user's search requirements.
+
+* *Feature 3*: Implemented the use of custom preference to specify custom path for addressbook.xml.
 
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_ - TODO
