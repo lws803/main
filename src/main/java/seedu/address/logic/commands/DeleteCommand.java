@@ -27,7 +27,7 @@ public class DeleteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Persons: %1$s\n%2$s";
+    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted persons: %1$s\n%2$s";
 
     private final ArrayList<Index> targetIndices;
 
@@ -39,7 +39,7 @@ public class DeleteCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
-        List<Person> deletedPersons = new ArrayList<>();
+        List<Person> listOfPersonsToDelete = new ArrayList<>();
 
         UserPrefs userPref = new UserPrefs();
         FileEncryptor fe = new FileEncryptor(userPref.getAddressBookFilePath().toString());
@@ -52,23 +52,22 @@ public class DeleteCommand extends Command {
             if (index.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
+            listOfPersonsToDelete.add(lastShownList.get(index.getZeroBased()));
         }
 
-        for (Index index : targetIndices) {
-            Person personToDelete = lastShownList.get(index.getZeroBased());
+        for (Person personToDelete : listOfPersonsToDelete) {
             model.deletePerson(personToDelete);
             model.removePersonFromPrediction(personToDelete);
-            deletedPersons.add(personToDelete);
         }
         model.commitAddressBook();
 
-        return new CommandResult(buildMessage(deletedPersons));
+        return new CommandResult(buildMessage(listOfPersonsToDelete));
     }
 
     private String buildMessage(List<Person> deletedPersons) {
         StringBuilder output = new StringBuilder();
         for (Person person : deletedPersons) {
-            output.append(person.getName().fullName).append("\n");
+            output.append(" -  ").append(person.getName().fullName).append("\n");
         }
         return String.format(MESSAGE_DELETE_PERSON_SUCCESS, targetIndices.size(), output);
     }
