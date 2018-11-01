@@ -74,7 +74,7 @@ public class DeleteCommand extends Command {
         for (Person person : deletedPersons) {
             output.append(" -  ").append(person.getName().fullName).append("\n");
         }
-        return String.format(MESSAGE_DELETE_PERSON_SUCCESS, targetIndices.size(), output);
+        return String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPersons.size(), output);
     }
 
     @Override
