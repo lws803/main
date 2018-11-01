@@ -203,11 +203,11 @@ public class StringUtilTest {
 
     @Test
     public void isValidSelectSyntax_validFormat_returnCorrectBoolean() {
-        assertTrue(StringUtil.isValidSelectSyntax("1   2 3"));
-        assertFalse(StringUtil.isValidSelectSyntax("-1 2 3"));
-        assertFalse(StringUtil.isValidSelectSyntax("1 2 0 3"));
-        assertTrue(StringUtil.isValidSelectSyntax(" 1  -    3"));
-        assertTrue(StringUtil.isValidSelectSyntax("1 -  3,   6 - 9"));
-        assertFalse(StringUtil.isValidSelectSyntax(" -  3, 6 - 10"));
+        assertTrue(StringUtil.isValidMultipleIndexFormat("1   2 3"));
+        assertFalse(StringUtil.isValidMultipleIndexFormat("-1 2 3"));
+        assertFalse(StringUtil.isValidMultipleIndexFormat("1 2 0 3"));
+        assertTrue(StringUtil.isValidMultipleIndexFormat(" 1  -    3"));
+        assertTrue(StringUtil.isValidMultipleIndexFormat("1 -  3,   6 - 9"));
+        assertFalse(StringUtil.isValidMultipleIndexFormat(" -  3, 6 - 10"));
     }
 }

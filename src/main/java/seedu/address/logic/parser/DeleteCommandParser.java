@@ -20,7 +20,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         try {
-            ArrayList<Index> indices = ParserUtil.parseSelectIndex(args);
+            ArrayList<Index> indices = ParserUtil.parseIndices(args);
             return new DeleteCommand(indices);
         } catch (ParseException pe) {
             throw new ParseException(
