@@ -6,7 +6,6 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-
 import seedu.address.commons.exceptions.FileEncryptorException;
 import seedu.address.commons.util.FileEncryptor;
 import seedu.address.logic.CommandHistory;

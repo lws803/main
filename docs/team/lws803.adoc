@@ -28,7 +28,10 @@ search for contacts who live in Jurong West and are tagged as friends.
 After which, it will perform a set intersection on the various contacts to find the contact which meets all the user's search requirements.
 
 * *Feature 3*: Implemented the use of custom preference to specify custom path for addressbook.xml.
-
+** What it does: Users can now specify the path they wish to save their addressbook.xml to.
+** Justification: Corporate users might want to have separate addressbooks without the need of storing their application in different folders.
+They can instead change the preference file to decide what is the name and location they wish to store the addressbook.xml data file.
+** Highlights: This feature requires implementing their json reader in `UserPrefs` class and storing it as a public variable for other classes to depend on.
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_ - TODO
 
