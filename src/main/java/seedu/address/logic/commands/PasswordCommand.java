@@ -51,7 +51,7 @@ public class PasswordCommand extends Command {
         }
 
 
-        if (message == FileEncryptor.MESSAGE_DECRYPTED) {
+        if (message.compareTo(FileEncryptor.MESSAGE_DECRYPTED) == 0) {
             model.reinitAddressbook();
             model.reinitialisePrediction();
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
