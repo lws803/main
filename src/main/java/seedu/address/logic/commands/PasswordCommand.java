@@ -1,11 +1,18 @@
 //@@author lws803
 package seedu.address.logic.commands;
 
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
 import seedu.address.commons.exceptions.FileEncryptorException;
 import seedu.address.commons.util.FileEncryptor;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 /**
  * Encrypts the XML data using a password and returns a message
@@ -43,12 +50,16 @@ public class PasswordCommand extends Command {
             throw new CommandException(fex.getLocalizedMessage());
         }
 
-        model.reinitAddressbook();
-        model.reinitialisePrediction();
 
         if (message == FileEncryptor.MESSAGE_DECRYPTED) {
+            model.reinitAddressbook();
+            model.reinitialisePrediction();
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             return new CommandResult(MESSAGE_DECRYPT_SUCCESS);
         } else {
+            String[] approvedList = {};
+            Predicate<Person> emptyPredicate = new NameContainsKeywordsPredicate(Arrays.asList(approvedList));
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS.and(emptyPredicate));
             return new CommandResult(MESSAGE_ENCRYPT_SUCCESS);
         }
     }
