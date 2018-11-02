@@ -11,6 +11,7 @@
 CorpPro is an addressbook for corporate users. +
 It provides a fast and efficient system for corporate users to store their contacts safely and securely. It is also easy to maneuver and access contacts.
 CorpPro is powered by JavaFX and boasts an intuitive GUI (Graphical User Interface) with easy-to-use CLI (Command Line Interface).
+This portfolio documents my ability to write java programs, user and developer guides.
 
 == Summary of contributions
 
@@ -18,6 +19,7 @@ CorpPro is powered by JavaFX and boasts an intuitive GUI (Graphical User Interfa
 ** What it does: Upon entering the `password` command followed by a password, it will encrypt the addressbook data using `PBEWithMD5AndDES` cipher.
 ** Justification: This feature was implemented so that corporate users can secure sensitive information in accordance to PDPA (Personal Data Protection Act) rules. Reducing the possibilities of data leaks and unwanted access.
 ** Highlights: This feature uses a well-known cipher `PBEWithMD5AndDES` and `PBEKeySpec` which accepts the user's password. Once the file is encrypted, it will not be crackable unless done via brute forcing.
+It also requires file type checking to make sure that I can compress both encryption and decryption process into one single `password` command much like a toggle so that users need not utilise 2 different commands for encrypting and decrypting.
 ** Credits: Code snippet adapted from Esailija [https://stackoverflow.com/questions/13673556/using-password-based-encryption-on-a-file-in-java[Stack overflow]]
 
 * *Feature 2*: Implemented smart searching for `find` command.
@@ -59,9 +61,6 @@ They can instead change the preference file to decide what is the name and locat
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=find]
-
-include::../UserGuide.adoc[tag=dataencryption]
 
 == Contributions to the Developer Guide
 
@@ -69,8 +68,5 @@ include::../UserGuide.adoc[tag=dataencryption]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=find]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
 
 
