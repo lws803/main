@@ -35,7 +35,7 @@ After which, it will perform a set intersection on the various contacts to find 
 They can instead change the preference file to decide what is the name and location they wish to store the addressbook.xml data file.
 ** Highlights: This feature requires implementing their json reader in `UserPrefs` class and storing it as a public variable for other classes to depend on.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_ - TODO
+* *Code contributed*: [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/functional/lws803.md[Functional code]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/test/lws803.md[Test code]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/unused/lws803-unused.md[Unused code]]
 
 * *Other contributions*:
 
