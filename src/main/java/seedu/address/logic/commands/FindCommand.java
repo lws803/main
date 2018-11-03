@@ -54,7 +54,6 @@ public class FindCommand extends Command {
     private final Predicate<Person> predicate = PREDICATE_SHOW_ALL_PERSONS;
     private Map<Prefix, String[]> prefixKeywordMap;
     private Prefix[] types;
-//    private ArrayList<String> actualMatchesStrings = new ArrayList<>();
     private Set<String> actualMatchesStrings = new HashSet<>();
 
     public FindCommand(Map<Prefix, String[]> prefixKeywordMap,
@@ -148,15 +147,15 @@ public class FindCommand extends Command {
      * @param b another string array
      */
     private void findActualMatches(final String [] a, final String [] b){
-        for(int i = 0, j = 0;i < a.length && j < b.length;){
+        for(int i = 0, j = 0 ; i < a.length && j < b.length ; ) {
             int res = a[i].compareToIgnoreCase(b[j]);
-            if(res == 0){
+            if (res == 0) {
                 actualMatchesStrings.add(a[i]);
                 i++;
                 j++;
-            }else if(res < 0){
+            } else if(res < 0) {
                 i++;
-            }else{
+            } else {
                 j++;
             }
         }
@@ -167,12 +166,12 @@ public class FindCommand extends Command {
      * @return the combined string using StringBuilder
      */
     private String combinedMatchesString () {
-        StringBuilder output =  new StringBuilder("{");
+        StringBuilder output = new StringBuilder("{");
         int count = 0;
         for (String match: actualMatchesStrings) {
             if (count == actualMatchesStrings.size() - 1) {
                 output.append(match);
-            } else  {
+            } else {
                 output.append(match);
                 output.append(", ");
             }
