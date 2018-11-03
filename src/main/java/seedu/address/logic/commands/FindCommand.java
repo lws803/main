@@ -146,14 +146,14 @@ public class FindCommand extends Command {
      * @param a one string array
      * @param b another string array
      */
-    private void findActualMatches(final String [] a, final String [] b){
-        for(int i = 0, j = 0 ; i < a.length && j < b.length ; ) {
+    private void findActualMatches (final String [] a, final String [] b) {
+        for (int i = 0, j = 0; i < a.length && j < b.length; ) {
             int res = a[i].compareToIgnoreCase(b[j]);
             if (res == 0) {
                 actualMatchesStrings.add(a[i]);
                 i++;
                 j++;
-            } else if(res < 0) {
+            } else if (res < 0) {
                 i++;
             } else {
                 j++;
