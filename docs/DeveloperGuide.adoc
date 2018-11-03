@@ -507,36 +507,55 @@ whenever you update it. This is facilitated by `XmlAdaptedActivity` which stores
 ===== Usage scenarios
 Given below is are examples of usage scenarios of how the schedule behaves when you carry out `schedule` commands. +
 
-====== Launching CorpPro:
-Step 1. The user launches the application. The schedule will be set with the data read from `addressbook.xml`. +
-The following sequence diagram shows you how the operation works:
-
-
 ====== Adding an `Activity`:
 
-Step 1. The user executes `schedule-add d/01/01/2018 a/Complete report.` to add an activity to their schedule. After being parsed by
-`addressbookParser` and `ScheduleAddCommandParser` respectively, the `ScheduleAddCommand` calls `Model#addActivity()` and the `activity`
-is added to the `schedule`.
+Step 1. The user executes `schedule-add d/01/01/2018 a/Complete report.` to add an activity to their schedule. +
+Step 2. The user input is first parsed by `AddressBookParser` which creates a new `ScheduleAddCommandParser` object. +
+Step 3. The arguments, `d/01/01/2018 a/Complete report.`, are then parsed by `ScheduleAddCommandParser`. +
+Step 4. `ScheduleAddCommandParser` checks the validity of the date and activity as input by the user. It then creates an
+`Activity` object. +
+Step 5. `ScheduleAddCommandParser` then creates a new `ScheduleAddCommand` with the `activity` as its argument. +
+Step 6. `ScheduleAddCommand` calls `Model#addActivity()` which creates the `activity` in the `schedule`.
+`indicateAddressBookChanged()` is called within `Model#addActivity()` to raise an `AddressBookChangedEvent` that the information within the
+address book is changed.  +
+Step 7. The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
+the display to show the correct information to the user. +
 
-The following sequence diagram shows you how the add operation works:
+The following sequence diagram shows you how the add operation works: +
+
+image::scheduleAddSequenceDiagram.png[width="800"]
 
 ====== Deleting an `Activity`:
 
-Step 1. The user executes `schedule-delete 2` to delete the activity at `INDEX 2` in their schedule. After being parsed by
-`addressbookParser` and `ScheduleDeleteCommandParser` respectively, the `ScheduleDeleteCommand` calls `Model#deleteActivity()` and the `activity`
-is deleted from the `schedule`.
+Step 1. The user executes `schedule-delete 2` to delete the activity at `INDEX 2` in their schedule. +
+Step 2. The user input is first parsed by `AddressBookParser` which creates a new `ScheduleDeleteCommandParser` object. +
+Step 3. `ScheduleDeleteCommandParser` checks the validity of the index as input by the user.
+Step 4. `ScheduleDeleteCommandParser` then creates a new `ScheduleDeleteCommand` with the `INDEX` as its argument. +
+Step 5. `ScheduleDeleteCommand` checks if the `INDEX` given is valid (within the size of the listed schedule) and calls
+`Model#deleteActivity()` which deletes the corresponding `activity` from the `schedule`.`indicateAddressBookChanged()` is called
+within `Model#deleteActivity()` to raise an `AddressBookChangedEvent` that the information within the
+address book is changed.  +
+Step 6. The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
+the display to show the correct information to the user. +
 
 The following sequence diagram shows you how the delete operation works:
 
 ====== Editing an `Activity`:
 
-Step 1. The user executes `schedule-edit 2 a/Interview intern.` to edit an activity at `INDEX 2` in their schedule. After being parsed by
-`addressbookParser` and `ScheduleEditCommandParser` respectively, the `ScheduleEditCommand` calls `Model#deleteActivity()`, followed by
-`Model#addActivity()` and the `activity` is edited in the `schedule`.
+Step 1. The user executes `schedule-edit 2 a/Interview intern.` to edit an activity at `INDEX 2` in their schedule. +
+Step 2. The user input is first parsed by `AddressBookParser` which creates a new `ScheduleEditCommandParser` object. +
+Step 3. The arguments, `2 a/Interview intern.`, are then parsed by `ScheduleEditCommandParser`. +
+Step 4. `ScheduleEditCommandParser` checks the validity of the index and activity as input by the user. +
+Step 5. `ScheduleEditCommandParser` then creates a new `ScheduleEditCommand` with the `INDEX` and the activity
+ `String` as its argument. +
+Step 6. `ScheduleEditCommand` checks if the `INDEX` given is valid (within the size of the listed schedule) and calls
+`Model#updateActivity()` which updates the corresponding `activity` in the `schedule`.
+`indicateAddressBookChanged()` is called within `Model#updateActivity()` to raise an `AddressBookChangedEvent` that the information within the
+address book is changed.  +
+Step 7. The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
+the display to show the correct information to the user. +
 
 The following sequence diagram shows you how the edit operation works:
-
-
 
 ==== Design Considerations
 ===== Aspect: Data structure of Schedule
