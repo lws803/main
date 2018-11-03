@@ -10,7 +10,7 @@
 == Overview
 CorpPro is an addressbook for corporate users. +
 It provides a fast and efficient system for corporate users to store their contacts safely and securely. It is also easy to maneuver and access contacts.
-CorpPro is powered by JavaFX and boasts an intuitive GUI (Graphical User Interface) with easy-to-use CLI (Command Line Interface).
+CorpPro is powered by JavaFX and boasts an intuitive GUI (Graphical User Interface) with easy-to-use CLI (Command Line Interface). +
 This portfolio documents my ability to write java programs, user and developer guides.
 
 == Summary of contributions
