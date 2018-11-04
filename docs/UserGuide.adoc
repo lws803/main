@@ -161,14 +161,6 @@ Format: `find PREFIX KEYWORD [MORE_KEYWORDS]`
 * Only one tag at a time can be searched eg. `find t/helloWorld` will find tags cotaining `helloWorld` and `find t/helloWorld t/world` will find tags containing `world`
 ****
 
-====== Display of actual matches
-This feature will also display actual keyword matches to give you a good indicator of which words are guessed.
-
-image::find_results1.png[width]
-
-From the above, we can see that `Marcuu` was not matched and thus it is not shown in the output for keyword(s) matched. +
-Despite not matching the actual name, person `Marcus Phua Zheng Jie` will still be shown as search will attempt to guess the next closest keyword to the one you entered.
-
 
 Examples:
 
@@ -193,6 +185,22 @@ Displays any person who is tagged as `friends`
 * `find n/John Betsy r/secretary a/jurong west ave` +
 Displays any person having names `John` and `Betsy` who is a `secretary` and lives in `jurong west ave`
 
+
+===== Search guessing
+This feature will also display actual keyword matches to give you a good indicator of which words are guessed.
+
+image::find_results1.png[width]
+
+From the above, we can see that `Marcuu` was not matched and thus it is not shown in the output for keyword(s) matched. +
+Despite not matching the actual name, person `Marcus Phua Zheng Jie` will still be shown as search will attempt to guess the next closest keyword to the one you entered.
+
+
+Examples:
+
+* `find p/9123` +
+Displays any person having the phone number similar to `9123` eg. `91231231`, `91231234`, and so on. +
+
+NOTE: If the keywords entered bears no similarity with any keywords among the contacts in your address book, it will list all your contacts.
 
 === Deleting a person : `delete`
 
