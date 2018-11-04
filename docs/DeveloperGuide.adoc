@@ -531,12 +531,12 @@ The figure above illustrates the sequence from step 1. to step 5. +
 [NOTE]
 If the date or the activity name is not valid, an error would be returned to the user instead of creating an `Activity` object.
 
-image::scheduleAddSequenceDiagramStorage.png[height="800"]
+image::scheduleAddSequenceDiagramStorage.png[width="800"]
 Figure 2. Interactions inside the Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence of step 6. +
 
-image::scheduleAddSequenceDiagramEvent.png[height="800"]
+image::scheduleAddSequenceDiagramEvent.png[width="800"]
 Figure 2. Interactions between the EventCenter and the UI and Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence of step 7. +
