@@ -220,7 +220,7 @@ public class ParserUtil {
         int day = Integer.parseInt(tokens.nextToken());
         int month = Integer.parseInt(tokens.nextToken());
         int year = Integer.parseInt(tokens.nextToken());
-        return Activity.toDate(day, --month, year);
+        return Activity.toDate(day, month, year);
     }
 
     /**
