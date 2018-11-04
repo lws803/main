@@ -157,7 +157,6 @@ Format: `find PREFIX KEYWORD [MORE_KEYWORDS]`
 * You can search by name, email, address, key performance index, position, phone number and tags
 * Partial words or words with typos will be matched too eg. 'Hangs' will be matched to 'Hans'
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-* Finding with a keyword that yields no matches may result in address book displaying all contacts rather than 0 results
 * Only one tag at a time can be searched eg. `find t/helloWorld` will find tags cotaining `helloWorld` and `find t/helloWorld t/world` will find tags containing `world`
 ****
 
@@ -372,6 +371,9 @@ Locks addressbook and clears all data.
 * `password helloworld` +
 Unlocks addressbook and restores all data.
 
+
+WARNING: Not to be confused with a login function, this feature does not actually store your password within the address book. +
+This feature is more akin to a safe in which you can lock and unlock for a one time use.
 
 === Email contacts : `mail`
 
