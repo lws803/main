@@ -158,7 +158,17 @@ Format: `find PREFIX KEYWORD [MORE_KEYWORDS]`
 * Partial words or words with typos will be matched too eg. 'Hangs' will be matched to 'Hans'
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 * Finding with a keyword that yields no matches may result in address book displaying all contacts rather than 0 results
+* Only one tag at a time can be searched eg. `find t/helloWorld` will find tags cotaining `helloWorld` and `find t/helloWorld t/world` will find tags containing `world`
 ****
+
+====== Display of actual matches
+This feature will also display actual keyword matches to give you a good indicator of which words are guessed.
+
+image::find_results1.png[width]
+
+From the above, we can see that `Marcuu` was not matched and thus it is not shown in the output for keyword(s) matched. +
+Despite not matching the actual name, person `Marcus Phua Zheng Jie` will still be shown as search will attempt to guess the next closest keyword to the one you entered.
+
 
 Examples:
 
@@ -182,7 +192,6 @@ Displays any person who has a note containing `John is forgetful`
 Displays any person who is tagged as `friends`
 * `find n/John Betsy r/secretary a/jurong west ave` +
 Displays any person having names `John` and `Betsy` who is a `secretary` and lives in `jurong west ave`
-
 
 
 === Deleting a person : `delete`
