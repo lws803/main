@@ -426,7 +426,7 @@ Step 2. Converts the names of file into the format DATE TIME and saves it in an 
 Step 3. Iterate through the array and form a string to print. +
 Step 4. Prints the string. +
 
-==== Restoring from the list
+// ==== Restoring from the list
 [[Implementation-Restore]]
 
 // tag::find[]
@@ -480,8 +480,63 @@ Each entry in the Schedule is an `Activity`. It consist of a `String` which take
 and the `Date`, of which the activity is due.
 
 ===== Schedule
-The schedule is a `TreeMap` with `Date` of existing activities as its `key` and a `list` of activities, which is due on the same
-date, as its `value`. The schedule is instantiated in the `addressBook` and can be accessed through methods in the `modelManager`
+`Schedule` is implemented with a `TreeMap`. It has the `Date` of activities as its `key` and a `list` of activities, which is due on the same
+date, as its `value`.
+
+Additionally, it implements the following main operations:
+
+* `Schedule#add()` -- Add an `Activity` to `schedule`. +
+* `Schedule#delete()` -- Deletes an `Activity` from `schedule`. +
+* `Schedule#setSchedule` -- Sets `schedule` from a `list` of activities. This operation is executed when importing data from an `XML` file.
+ This happens when you first start *CorpPro*.
+* `Schedule#getSchedule()` -- Returns the schedule with activities sorted by `Date` to be displayed in the GUI by `SchedulePanel` in the `UI` component.
+
+The schedule is instantiated in the `AddressBook` and have the main operations exposed in the `Model` interface as follows:
+
+* `Model#addActivity()` -- Exposes `Schedule#add()` .
+* `Model#deleteActivity()` -- Exposes `Schedule#delete()`.
+* `Model#updateActivity()` -- This operation edits an `Activity` in `schedule` by first executing `Schedule#delete()`, followed
+by `Schedule#add()`.
+* `Model#getSchedule()` -- Exposes `Schedule#getSchedule()`.
+
+===== Storage
+In addition to the CRUD (create, read, update and delete) functions, the schedule is also saved to an `XML` file
+whenever you update it. This is facilitated by `XmlAdaptedActivity` which stores an `Activity` in an `XML` format.
+`XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a `list` and is saved in `addressbook.xml`.
+
+===== Usage scenarios
+Given below is are examples of usage scenarios of how the schedule behaves when you carry out `schedule` commands. +
+
+====== Launching CorpPro:
+Step 1. The user launches the application. The schedule will be set with the data read from `addressbook.xml`. +
+The following sequence diagram shows you how the operation works:
+
+
+====== Adding an `Activity`:
+
+Step 1. The user executes `schedule-add d/01/01/2018 a/Complete report.` to add an activity to their schedule. After being parsed by
+`addressbookParser` and `ScheduleAddCommandParser` respectively, the `ScheduleAddCommand` calls `Model#addActivity()` and the `activity`
+is added to the `schedule`.
+
+The following sequence diagram shows you how the add operation works:
+
+====== Deleting an `Activity`:
+
+Step 1. The user executes `schedule-delete 2` to delete the activity at `INDEX 2` in their schedule. After being parsed by
+`addressbookParser` and `ScheduleDeleteCommandParser` respectively, the `ScheduleDeleteCommand` calls `Model#deleteActivity()` and the `activity`
+is deleted from the `schedule`.
+
+The following sequence diagram shows you how the delete operation works:
+
+====== Editing an `Activity`:
+
+Step 1. The user executes `schedule-edit 2 a/Interview intern.` to edit an activity at `INDEX 2` in their schedule. After being parsed by
+`addressbookParser` and `ScheduleEditCommandParser` respectively, the `ScheduleEditCommand` calls `Model#deleteActivity()`, followed by
+`Model#addActivity()` and the `activity` is edited in the `schedule`.
+
+The following sequence diagram shows you how the edit operation works:
+
+
 
 ==== Design Considerations
 ===== Aspect: Data structure of Schedule
@@ -1004,8 +1059,6 @@ Functional Requirements:
 
 |`* * *` |user who values time |autocomplete my commands |execute commands faster.
 
-|`* * *` |forgetful user |look at the photos of my contacts |recognise the person.
-
 |`* * *` |forgetful user |approximate my search input |get the closest output suggestions I need.
 
 |`* * *` |employee |access the full profile of my clients |retrieve their information when required.
@@ -1031,6 +1084,8 @@ Functional Requirements:
 |`*` |user |schedule tasks in a calendar |notified of my appointments.
 
 |`*` |user |schedule tasks in a calendar |notified of when tasks are due.
+
+|`*` |forgetful user |look at the photos of my contacts |recognise the person.
 |=======================================================================
 
 [appendix]

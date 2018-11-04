@@ -26,14 +26,19 @@ public class ImportCommand extends Command {
     public static final String DUPLICATE_PERSON = "This is a duplicated person";
     public static final String COMMAND_WORD = CliSyntax.COMMAND_IMPORT;
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Imports the address book into a directory\n"
+            + ": Imports the address book from a directory\n"
             + "Parameters: "
-            + PREFIX_DIRECTORY + "Directory\n"
+            + PREFIX_DIRECTORY + "Directory "
             + PREFIX_FILENAME + "File Name\n"
+            + "Example (For Windows): " + COMMAND_WORD + " "
+            + PREFIX_DIRECTORY + "C:\\Users\\USER "
+            + PREFIX_FILENAME + "exportFile\n"
+            + "Example (For Mac/Unix): " + COMMAND_WORD + " "
+            + PREFIX_DIRECTORY + "/home/cs/class/ "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DIRECTORY + "C:\\Users\\USER"
+            + PREFIX_DIRECTORY + "C:\\Users\\USER "
             + PREFIX_FILENAME + "exportFile";
-    public static final String MESSAGE_FAILURE = "Directory does not exists.";
+    public static final String MESSAGE_FAILURE = "Directory does not exists or the file is of the wrong format.";
     public static final String MESSAGE_SUCCESS = "AddressBook is imported from %1$s.";
 
     private static final Logger logger = Logger.getLogger(ImportCommand.class.getName());
@@ -62,7 +67,7 @@ public class ImportCommand extends Command {
             for (Person toAdd : personList) {
                 try {
                     model.addPerson(toAdd);
-                    model.getTextPrediction().insertPerson(toAdd);
+                    model.insertPersonIntoPrediction(toAdd);
                 } catch (DuplicatePersonException dup) {
                     logger.info(DUPLICATE_PERSON);
                 }
