@@ -368,7 +368,7 @@ opens your email application with all accountants as recipients. +
 opens your email application with person (3rd person in the list panel) as recipient.
 
 === Schedule : `schedule`
-image::scheduleExample.png[width="790"]
+image::scheduleExample.png[width="400"]
 
 The Schedule feature helps you remember important activities by listing out important events and dates! +
 
@@ -381,7 +381,7 @@ Format: `schedule-add d/DATE a/ACTIVITY` +
 * Example: `schedule-add d/30/10/2018 a/Attend meeting with Alex.` +
 Adds activity "Attend meeting with Alex." on "30/10/2018" to your schedule:
 +
-image::scheduleAddExample.png[width="790"]
+image::scheduleAddExample.png[width="400"]
 
 *To edit an activity from your schedule:* +
 Format: `schedule-edit INDEX a/ACTIVITY` +
@@ -395,11 +395,11 @@ Format: `schedule-edit INDEX a/ACTIVITY` +
 * Example: `schedule-edit 1 a/Attend meeting with Alexia.` +
 To edit the following activity at `INDEX 1`:
 +
-image::scheduleEditExample.png[width="790"]
+image::scheduleEditExample.png[width="400"]
 +
 to "Attend meeting with Alexia.":
 +
-image::scheduleResultExample.png[width="790"]
+image::scheduleResultExample.png[width="400"]
 
 *To delete an activity from your schedule:* +
 Format: `schedule-delete INDEX` +
@@ -412,7 +412,7 @@ Format: `schedule-delete INDEX` +
 * Example: `schedule-delete 1` +
 Deletes the following activity at `INDEX 1` in your schedule:
 +
-image::scheduleDeleteExample.png[width="790"]
+image::scheduleDeleteExample.png[width="400"]
 
 === Text prediction
 
