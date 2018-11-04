@@ -502,7 +502,7 @@ by `Schedule#add()`.
 ===== Storage
 In addition to the CRUD (create, read, update and delete) functions, the schedule is also saved to an `XML` file
 whenever you update it. This is facilitated by `XmlAdaptedActivity` which stores an `Activity` in an `XML` format.
-`XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a `list` and is saved in `addressbook.xml`.
+`XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a list and is saved in `addressbook.xml`.
 
 ===== Usage scenarios
 Given below is are examples of usage scenarios of how the schedule behaves when you carry out `schedule` commands. +
@@ -521,9 +521,26 @@ address book is changed.  +
 Step 7. The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
 the display to show the correct information to the user. +
 
-The following sequence diagram shows you how the add operation works: +
+The following sequence diagrams shows you how the add operation works: +
 
-image::scheduleAddSequenceDiagram.png[width="800"]
+image::scheduleAddSequenceDiagramLogic.png[width="800"]
+Figure 1. Interactions inside the Logic Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+[NOTE]
+The figure above illustrates the sequence from step 1. to step 5. +
+
+[NOTE]
+If the date or the activity name is not valid, an error would be returned to the user instead of creating an `Activity` object.
+
+image::scheduleAddSequenceDiagramStorage.png[height="800"]
+Figure 2. Interactions inside the Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+[NOTE]
+The figure above illustrates the sequence of step 6. +
+
+image::scheduleAddSequenceDiagramEvent.png[height="800"]
+Figure 2. Interactions between the EventCenter and the UI and Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+[NOTE]
+The figure above illustrates the sequence of step 7. +
+Storage of each activity is facilitated by `XmlAdaptedActivity` which stores an `Activity` in an `XML` format. `XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a list and is saved in `addressbook.xml`
 
 ====== Deleting an `Activity`:
 
@@ -537,8 +554,6 @@ within `Model#deleteActivity()` to raise an `AddressBookChangedEvent` that the i
 address book is changed.  +
 Step 6. The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
 the display to show the correct information to the user. +
-
-The following sequence diagram shows you how the delete operation works:
 
 ====== Editing an `Activity`:
 
@@ -554,8 +569,6 @@ Step 6. `ScheduleEditCommand` checks if the `INDEX` given is valid (within the s
 address book is changed.  +
 Step 7. The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
 the display to show the correct information to the user. +
-
-The following sequence diagram shows you how the edit operation works:
 
 ==== Design Considerations
 ===== Aspect: Data structure of Schedule
