@@ -523,7 +523,7 @@ the display to show the correct information to the user. +
 
 The following sequence diagrams shows you how the add operation works: +
 
-image::scheduleAddSequenceDiagramLogic.png[width="800"]
+image::scheduleAddSequenceDiagramLogic.png[width="900"]
 Figure 1. Interactions inside the Logic Component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence from step 1. to step 5. +
@@ -537,9 +537,11 @@ Figure 2. Interactions inside the Storage Component for the `schedule-add d/01/0
 The figure above illustrates the sequence of step 6. +
 
 image::scheduleAddSequenceDiagramEvent.png[width="800"]
-Figure 2. Interactions between the EventCenter and the UI and Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+Figure 3. Interactions between the EventCenter and the UI and Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence of step 7. +
+
+[NOTE]
 Storage of each activity is facilitated by `XmlAdaptedActivity` which stores an `Activity` in an `XML` format. `XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a list and is saved in `addressbook.xml`
 
 ====== Deleting an `Activity`:
