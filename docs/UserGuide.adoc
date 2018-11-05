@@ -98,7 +98,10 @@ Adds a person to the address book +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [r/POSITION] [k/KPI] [d/NOTE] [t/TAG [PRIORITY]]...`
 
 [TIP]
-KPI scores should be a number from 0 - 5
+KPI refers to https://en.wikipedia.org/wiki/Performance_indicator[Key Performance Index].
+
+[TIP]
+KPI scores should be a number from 0 - 5.
 
 [TIP]
 A person can have any number of tags (including 0). Priorities, high(2) or medium(1), can be added after the tag.
