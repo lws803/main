@@ -431,7 +431,7 @@ image::scheduleDeleteExample.png[width="400"]
 Text prediction feature allows you to complete your command faster with less typing. +
 Invoke this feature by pressing the _Tab_ key on the keyboard. +
 
-You can invoke this feature on: +
+You can invoke this feature on _most_ command keywords and arguments: +
 
 * Command keywords (`mail`, `add`, `find`, etc.) .
 * Flag arguments (`n/`, `a/`, `t/`, etc.) .
@@ -441,6 +441,9 @@ Typing `m` in the box and pressing _Tab_ will auto complete to the `mail` comman
 
 Note: +
 
+* This feature does not work with some flag arguments when used with certain commands. +
+E.g. `add n/...` +
+If text prediction returns no predictions, it means text prediction is unsupported in that context.
 * If there are multiple predicted values, they will be listed down. +
 * If no argument flags are specified, the default value predicted is based on the command's default argument. +
 
