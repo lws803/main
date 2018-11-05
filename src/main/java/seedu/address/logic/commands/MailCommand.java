@@ -8,6 +8,11 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import seedu.address.commons.util.FileEncryptor;
 import seedu.address.logic.CommandHistory;
@@ -177,9 +182,19 @@ public class MailCommand extends Command {
      * @throws CommandException if unable to open the email application.
      */
     private void sendWithUri(URI uriToMail) throws CommandException {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        Future<?> future = executorService.submit(new MailCallable());
+        new Thread (() -> {
+            try {
+                desktop.browse(uriToMail);
+            } catch (UnsupportedOperationException | IOException | SecurityException e) {
+                System.out.println(e.getMessage());
+            }
+        }).start();
+
         try {
-            desktop.mail(uriToMail);
-        } catch (UnsupportedOperationException | IOException | SecurityException e) {
+            future.get();
+        } catch (ExecutionException | InterruptedException e) {
             throw new CommandException(e.getMessage());
         }
     }
@@ -206,5 +221,15 @@ public class MailCommand extends Command {
                 && this.mailType == ((MailCommand) other).mailType
                 && Objects.equals(this.mailArgs, ((MailCommand) other).mailArgs)
                 && Objects.equals(this.desktop, ((MailCommand) other).desktop));
+    }
+
+    /**
+     * Customized Callable class for mail purpose.
+     */
+    private class MailCallable implements Callable<Void> {
+        @Override
+        public Void call() throws Exception {
+            return null;
+        }
     }
 }
