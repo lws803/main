@@ -178,11 +178,13 @@ public class MailCommand extends Command {
     private void sendWithUri(URI uriToMail) {
         // Unfortunately due to a bug in Desktop class, a new thread has to be used to prevent app freezing.
         // This however, means an exception cannot be easily thrown from the thread.
+        // Solution adapted from :
+        // https://stackoverflow.com/questions/23176624/javafx-freeze-on-desktop-openfile-desktop-browseuri
         new Thread (() -> {
             try {
                 desktop.mail(uriToMail);
             } catch (UnsupportedOperationException | IOException | SecurityException e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
         }).start();
     }
