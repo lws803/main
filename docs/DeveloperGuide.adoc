@@ -657,7 +657,6 @@ the display to show the correct information to the user. +
 ** Pros: Able to sort by time in future implementations.
 ** Cons: Need to parse `Date` when converting it to `String`.
 ** Cons: Need to parse user inputs to convert `String` to `Date`.
-
 // end::schedule[]
 
 == Documentation
