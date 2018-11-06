@@ -8,11 +8,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import seedu.address.commons.util.FileEncryptor;
 import seedu.address.logic.CommandHistory;
@@ -179,24 +174,17 @@ public class MailCommand extends Command {
     /**
      * Opens the system's default email application given the specified URI.
      * @param uriToMail URI specifying the recipients.
-     * @throws CommandException if unable to open the email application.
      */
-    private void sendWithUri(URI uriToMail) throws CommandException {
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
-        Future<?> future = executorService.submit(new MailCallable());
+    private void sendWithUri(URI uriToMail) {
+        // Unfortunately due to a bug in Desktop class, a new thread has to be used to prevent app freezing.
+        // This however, means an exception cannot be easily thrown from the thread.
         new Thread (() -> {
             try {
-                desktop.browse(uriToMail);
+                desktop.mail(uriToMail);
             } catch (UnsupportedOperationException | IOException | SecurityException e) {
                 System.out.println(e.getMessage());
             }
         }).start();
-
-        try {
-            future.get();
-        } catch (ExecutionException | InterruptedException e) {
-            throw new CommandException(e.getMessage());
-        }
     }
 
     /**
@@ -221,15 +209,5 @@ public class MailCommand extends Command {
                 && this.mailType == ((MailCommand) other).mailType
                 && Objects.equals(this.mailArgs, ((MailCommand) other).mailArgs)
                 && Objects.equals(this.desktop, ((MailCommand) other).desktop));
-    }
-
-    /**
-     * Customized Callable class for mail purpose.
-     */
-    private class MailCallable implements Callable<Void> {
-        @Override
-        public Void call() throws Exception {
-            return null;
-        }
     }
 }
