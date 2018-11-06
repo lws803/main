@@ -9,7 +9,7 @@
 
 == Overview
 
-*CorpPro* is a desktop address book application which targets Corporate Users. It strives to help its users better manage
+*CorpPro* is a desktop address book application which targets Corporate Users. It helps its users better manage
 their information to increase efficiency and to produce effective results. *CorpPro*’s features aid users to find relevant
 details quickly, in addition to being able to create a schedule to plan and set goals. Users can create and update entries
 in *CorpPro* through the command-line interface(CLI), as well as having an uncluttered user interface(UI) to display corresponding
@@ -23,9 +23,9 @@ information. It is made using Java, a widely used programming language, with ove
      *** Tag priority
      *** Key Performance Index(KPI)
      *** Note/Description
-** Justification: As a corporate user with many contacts, there is a need to tag or describe each contact to recognise or
-find them quickly. Tags now have priorities to better indicate the importance of each contact. The Key Performing Index (KPI)
-is also included in the attributes to better facilitate managers or supervisors in rating or ranking their employees.
+** Justification: As a corporate user with many contacts, there is a need to tag or describe each contact to catagorize or
+search them quickly. Users can use tags to assign an importance level to each contact. The Key Performing Index (KPI)
+is also included in the attributes to enable managers or supervisors in rate or rank their employees.
 ** Highlights: This feature affects existing commands and facilitates listing or finding contacts via these additional attributes.
 
 * *Major enhancement*: *Added schedule*
