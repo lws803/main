@@ -38,7 +38,7 @@ its contents after the user has exit the application.In addition, a unique data 
 
 * *Minor enhancement*: Enhanced the edit command to edit all listed entries in one command.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+* *Code contributed*: [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/functional/LowGinWee.md[Functional code]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/test/LowGinWee.md[Test code]]
 
 * *Other contributions*:
 
@@ -64,9 +64,7 @@ its contents after the user has exit the application.In addition, a unique data 
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
-
-include::../UserGuide.adoc[tag=dataencryption]
+include::../UserGuide.adoc[tag=schedule]
 
 == Contributions to the Developer Guide
 
@@ -74,13 +72,4 @@ include::../UserGuide.adoc[tag=dataencryption]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
-
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
+include::../DeveloperGuide.adoc[tag=schedule]
