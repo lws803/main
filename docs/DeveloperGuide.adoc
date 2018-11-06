@@ -577,7 +577,7 @@ the display to show the correct information to the user. +
 The following sequence diagrams shows you how the add operation works: +
 
 image::scheduleAddSequenceDiagramLogic.png[width="900"]
-Figure 1. Interactions inside the Logic Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+Figure 1. Interactions inside the Logic component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
 
@@ -585,12 +585,12 @@ The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
 If the date or the activity name is not valid, an error would be returned to the user instead of creating an `Activity` object.
 
 image::scheduleAddSequenceDiagramStorage.png[width="800"]
-Figure 2. Interactions inside the Storage Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+Figure 2. Interactions inside the Storage component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence of *Step 6.* +
 
 image::scheduleAddSequenceDiagramEvent.png[width="800"]
-Figure 3. Interactions between the `EventCenter`, `UI` and `Storage` Component for the `schedule-add d/01/01/2018 a/Complete report.` command
+Figure 3. Interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence of *Step 7.* +
 
@@ -619,7 +619,7 @@ the display to show the correct information to the user. +
 The following sequence diagrams shows you how the delete operation works:
 
 image::scheduleDeleteSequenceDiagramLogic.png[width="900"]
-Figure 4. Interactions inside the Logic Component for the `schedule-delete 2` command
+Figure 4. Interactions inside the Logic component for the `schedule-delete 2` command
 [NOTE]
 The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
 
@@ -627,11 +627,11 @@ The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
 If the index is not valid, i.e. out of range, an error would be returned to the user instead of deleting an activity.
 
 image::scheduleDeleteSequenceDiagramStorage.png[width="900"]
-Figure 5. Interactions inside the Model Component for the `schedule-delete 2` command
+Figure 5. Interactions inside the Model component for the `schedule-delete 2` command
 [NOTE]
 The figure above illustrates the sequence of *Step 6.* +
 
-The interactions between the `EventCenter`, `UI` and `Storage` Component `schedule-delete 2` command (*Step 7.*) are similar to *adding
+The interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-delete 2` command (*Step 7.*) are similar to *adding
 an activity* (see *Figure 3.*)
 
 ====== Editing an activity:
@@ -659,7 +659,7 @@ updates the display to show the correct information to the user. +
 The following sequence diagrams shows you how the edit operation works:
 
 image::scheduleEditSequenceDiagramLogic.png[width="900"]
-Figure 6. Interactions inside the Logic Component for the `schedule-edit 2 a/Interview intern.` command
+Figure 6. Interactions inside the Logic component for the `schedule-edit 2 a/Interview intern.` command
 [NOTE]
 The figure above illustrates the sequence from *Step 1.* to *Step 6.* +
 
@@ -669,11 +669,11 @@ an activity.
 
 
 image::scheduleEditSequenceDiagramStorage.png[width="900"]
-Figure 7. Interactions inside the Model Component for the `schedule-edit 2 a/Interview intern.` command
+Figure 7. Interactions inside the Model component for the `schedule-edit 2 a/Interview intern.` command
 [NOTE]
 The figure above illustrates the sequence of  *Step 7.* +
 
-The interactions between the `EventCenter`, `UI` and `Storage` Component `schedule-edit 2 a/Interview intern.`
+The interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-edit 2 a/Interview intern.`
 command (*Step 8.*) are similar to *adding
 an activity* (see *Figure 3.*)
 
