@@ -120,7 +120,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
 
 
-        //TODO add invalid note test
+        //TODO add tests for additional attributes
         /* Case: add a duplicate person -> rejected */
         command = PersonUtil.getAddCommand(HOON);
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_PERSON);
