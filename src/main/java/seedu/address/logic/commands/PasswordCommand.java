@@ -22,7 +22,7 @@ public class PasswordCommand extends Command {
     public static final String COMMAND_WORD = "password";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Hashes file using password.\n"
-            + "Parameters: KEYWORD PASSWORD...\\n"
+            + "Parameter: PASSWORD\n"
             + "Example: " + COMMAND_WORD + " myPassword";
 
     public static final String MESSAGE_ENCRYPT_SUCCESS = "File encrypted!";
