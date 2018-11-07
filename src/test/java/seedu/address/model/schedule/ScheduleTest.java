@@ -41,6 +41,30 @@ public class ScheduleTest {
     }
 
     @Test
+    public void update_nullToAdd_throwsNullPointerException() {
+        schedule.add(ACTIVITY_TASK_2);
+        thrown.expect(NullPointerException.class);
+        schedule.update(null, ACTIVITY_TASK_1);
+    }
+
+    @Test
+    public void update_nullToDelete_throwsNullPointerException() {
+        schedule.add(ACTIVITY_TASK_2);
+        thrown.expect(NullPointerException.class);
+        schedule.update(ACTIVITY_TASK_2, null);
+    }
+
+    @Test
+    public void update_validParams_success() {
+        Schedule expectedSchedule = new Schedule();
+        Activity editedActivity = new Activity(ACTIVITY_TASK_1.getDate(), ACTIVITY_TASK_2.getActivityName());
+        expectedSchedule.add(editedActivity);
+        schedule.add(ACTIVITY_TASK_1);
+        schedule.update(ACTIVITY_TASK_1, editedActivity);
+        assertEquals(schedule, expectedSchedule);
+    }
+
+    @Test
     public void setActivity_nullList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         schedule.setSchedule(null);

@@ -374,6 +374,8 @@ Examples:
 Locks addressbook and clears all data.
 * `password helloworld` +
 Unlocks addressbook and restores all data.
+// end::dataencryption[]
+
 
 === Email contacts : `mail`
 
@@ -395,6 +397,7 @@ opens your email application with all accountants as recipients. +
 `mail` +
 opens your email application with person (3rd person in the list panel) as recipient.
 
+// tag::schedule[]
 === Schedule : `schedule`
 image::scheduleExample.png[width="400"]
 
@@ -441,6 +444,7 @@ Format: `schedule-delete INDEX` +
 Deletes the following activity at `INDEX 1` in your schedule:
 +
 image::scheduleDeleteExample.png[width="400"]
+// end::schedule[]
 
 === Text prediction
 
@@ -502,6 +506,9 @@ When an address book is exported, it will be exported into a CSV file which can 
 Each row refers to a person. +
 Each column refers to a separate field of the person. +
 If a compulsory field is left blank, the address book will not allow the CSV file to be imported. +
+
+image::CSV_Format.png[width="790"]
+
 ****
 * Compulsory field includes: Name, Phone, Email and Address.
 ****
