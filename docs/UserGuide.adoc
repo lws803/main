@@ -427,6 +427,7 @@ Deletes the following activity at `INDEX 1` in your schedule:
 +
 image::scheduleDeleteExample.png[width="400"]
 // end::schedule[]
+
 === Text prediction
 
 Text prediction feature allows you to complete your command faster with less typing. +
