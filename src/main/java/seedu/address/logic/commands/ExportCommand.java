@@ -27,8 +27,11 @@ public class ExportCommand extends Command {
             + "Parameters: "
             + PREFIX_DIRECTORY + "Directory "
             + PREFIX_FILENAME + "Name of File\n"
-            + "Example: " + COMMAND_WORD + " "
+            + "Example (For Windows): " + COMMAND_WORD + " "
             + PREFIX_DIRECTORY + "C:\\Users\\USER\\ "
+            + PREFIX_FILENAME + "export1\n"
+            + "Example (For Mac/Unix): " + COMMAND_WORD + " "
+            + PREFIX_DIRECTORY + "/home/cs/class/ "
             + PREFIX_FILENAME + "export1";
     public static final String MESSAGE_FAILURE = "Directory does not exist.";
     public static final String MESSAGE_FILE_NAME_EXIST = "A file with the name %1$s exists in this directory.";
@@ -37,8 +40,6 @@ public class ExportCommand extends Command {
     private String directory;
     private String fileName;
     private String fullDirectory;
-
-    public ExportCommand() {}
 
     public ExportCommand(String directory, String fileName, String fullDirectory) {
         this.directory = directory;
