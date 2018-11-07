@@ -17,7 +17,7 @@ import seedu.address.model.Model;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.storage.CsvWriter;
+import seedu.address.storage.CsvReader;
 
 /**
  * Imports a CSV file of the address book from a directory.
@@ -35,8 +35,6 @@ public class ImportCommand extends Command {
             + PREFIX_FILENAME + "exportFile\n"
             + "Example (For Mac/Unix): " + COMMAND_WORD + " "
             + PREFIX_DIRECTORY + "/home/cs/class/ "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DIRECTORY + "C:\\Users\\USER "
             + PREFIX_FILENAME + "exportFile";
     public static final String MESSAGE_FAILURE = "Directory does not exists or the file is of the wrong format.";
     public static final String MESSAGE_SUCCESS = "AddressBook is imported from %1$s.";
@@ -44,8 +42,6 @@ public class ImportCommand extends Command {
     private static final Logger logger = Logger.getLogger(ImportCommand.class.getName());
     private File file;
     private String directory;
-
-    public ImportCommand() {}
 
     public ImportCommand(String directory, File file) {
         this.directory = directory;
@@ -62,8 +58,8 @@ public class ImportCommand extends Command {
         }
 
         try {
-            CsvWriter csvWriter = new CsvWriter(file);
-            List<Person> personList = csvWriter.convertToList();
+            CsvReader csvReader = new CsvReader(file);
+            List<Person> personList = csvReader.convertToList();
             for (Person toAdd : personList) {
                 try {
                     model.addPerson(toAdd);
@@ -75,7 +71,7 @@ public class ImportCommand extends Command {
             model.commitAddressBook();
             return new CommandResult(String.format(MESSAGE_SUCCESS, directory));
         } catch (IOException io) {
-            throw new CommandException(CsvWriter.WRONG_FORMAT);
+            throw new CommandException(CsvReader.WRONG_FORMAT);
         }
     }
 }

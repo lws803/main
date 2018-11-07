@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -26,14 +26,16 @@ import seedu.address.model.backup.BackupList;
 
 public class RestoreCommandTest {
     private static final Logger logger = Logger.getLogger(RestoreCommand.class.getName());
-    private static final String BACKUP_DIRECTORY = "src\\test\\data\\RestoreTestXml";
+    private static final String BACKUP_DIRECTORY = "src" + File.separator
+        + "test" + File.separator
+        + "data" + File.separator
+        + "RestoreTestXml";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
-    private File backupDir;
     private BackupList backupList;
     private Index trueIndex;
     private Index falseIndex;
@@ -41,12 +43,12 @@ public class RestoreCommandTest {
     /**
      * Create backup files for the restore command to execute
      */
+    @Before
     public void setUp() {
         try {
             trueIndex = ParserUtil.parseIndex("1");
             falseIndex = ParserUtil.parseIndex("2");
-            backupDir = new File(BACKUP_DIRECTORY);
-            backupList = new BackupList(backupDir);
+            backupList = new BackupList(BACKUP_DIRECTORY);
         } catch (IOException io) {
             logger.severe(io.getMessage());
         } catch (ParseException pe) {
@@ -57,7 +59,6 @@ public class RestoreCommandTest {
     /**
      * Test when the index is valid
      */
-    @Ignore
     @Test
     public void execute_index_success() {
         try {
@@ -72,7 +73,6 @@ public class RestoreCommandTest {
     /**
      * Test when the index is invalid
      */
-    @Ignore
     @Test
     public void execute_index_invalid() throws Exception {
         thrown.expect(CommandException.class);
