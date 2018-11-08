@@ -197,7 +197,6 @@ image::find_feature1.png[width="400"]
 
 From the above results we can see that `Bernicc` yields `Keywords guessed: {Bernice}` whereas `Alex` yields `Keywords matched: {Alex}`
 
-NOTE: If the keywords entered bears no similarity with any keywords among the contacts in your address book, it will list all your contacts. This applies especially for text type parameters such as *name*, *addresses*, *tags*, *notes* and *position*
 
 Examples:
 
