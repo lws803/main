@@ -1,21 +1,16 @@
-//@@author lws803-unused
+//@@author lws803
+package seedu.address.commons.util;
 
-// Deprecated because of new distance technique - Levenshtein distance
-/**
- * Hamming distance to find word similarity
- */
-public class HammingDistanceUtil {
-    private String left, right;
+public interface HammingDistanceUtil {
 
-    public HammingDistanceUtil (String left, String right) {
-        this.left = left;
-        this.right = right;
-    }
 
     /**
-     * Find hamming distance of two words
+     * Find Hammign distance between two strings
+     * @param left left string
+     * @param right right string
+     * @return returns the distance
      */
-    public int getDistance () {
+    static int getDistance (final String left, final String right) {
         int distance = 0;
         if (left.length() < right.length()) {
             for (int i = 0; i < left.length(); i++) {

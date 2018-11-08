@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.FileEncryptor;
@@ -55,6 +56,8 @@ public class FindCommand extends Command {
     private Map<Prefix, String[]> prefixKeywordMap;
     private Prefix[] types;
     private Set<String> actualMatchesStrings = new HashSet<>();
+    private Set<String> guessedMatchesStrings = new HashSet<>();
+
 
     public FindCommand(Map<Prefix, String[]> prefixKeywordMap,
                        Prefix[] types) {
@@ -82,10 +85,11 @@ public class FindCommand extends Command {
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size())
                 + "\n"
-                + Integer.toString(actualMatchesStrings.size())
-                + " keyword(s) matched:"
+                + "Keywords matched: "
+                + combinedMatchesString(actualMatchesStrings)
                 + "\n"
-                + combinedMatchesString()
+                + "Keywords guessed: "
+                + combinedMatchesString(guessedMatchesStrings)
         );
     }
 
@@ -100,9 +104,14 @@ public class FindCommand extends Command {
             ClosestMatchList closestMatch = new ClosestMatchList(model, type, prefixKeywordMap.get(type));
             String[] approvedList = closestMatch.getApprovedList();
             String[] keywordsForType = prefixKeywordMap.get(type);
-            Arrays.sort(approvedList);
-            Arrays.sort(keywordsForType);
-            findActualMatches(approvedList, keywordsForType);
+            Set<String> approvedSet = new HashSet<>(
+                    Arrays.asList(approvedList).stream().distinct().collect(Collectors.toList()));
+
+            Set<String> keywordsForTypeSet = new HashSet<>(
+                    Arrays.asList(keywordsForType).stream().distinct().collect(Collectors.toList()));
+
+
+            findActualMatches(approvedSet, keywordsForTypeSet);
 
             if (type == PREFIX_PHONE) {
                 combinedPredicate = combinedPredicate.and(
@@ -141,22 +150,18 @@ public class FindCommand extends Command {
         return combinedPredicate;
     }
 
+
     /**
      * Determine the number of actual keyword matches
-     * @param a one string array
-     * @param b another string array
+     * @param closestMatchesSet closestMatcSet determined by Levensthein distance
+     * @param keywordsSet keywords input from command
      */
-    private void findActualMatches (final String [] a, final String [] b) {
-        for (int i = 0, j = 0; i < a.length && j < b.length; ) {
-            int res = a[i].compareToIgnoreCase(b[j]);
-            if (res == 0) {
-                actualMatchesStrings.add(a[i]);
-                i++;
-                j++;
-            } else if (res < 0) {
-                i++;
+    private void findActualMatches (final Set<String> closestMatchesSet, final Set<String> keywordsSet) {
+        for (String match: closestMatchesSet) {
+            if (keywordsSet.contains(match)) {
+                actualMatchesStrings.add(match);
             } else {
-                j++;
+                guessedMatchesStrings.add(match);
             }
         }
     }
@@ -165,11 +170,11 @@ public class FindCommand extends Command {
      * Combines the matches to form a string for output
      * @return the combined string using StringBuilder
      */
-    private String combinedMatchesString () {
+    private String combinedMatchesString (Set<String> stringMatches) {
         StringBuilder output = new StringBuilder("{");
         int count = 0;
-        for (String match: actualMatchesStrings) {
-            if (count == actualMatchesStrings.size() - 1) {
+        for (String match: stringMatches) {
+            if (count == stringMatches.size() - 1) {
                 output.append(match);
             } else {
                 output.append(match);
@@ -177,7 +182,6 @@ public class FindCommand extends Command {
             }
             count++;
         }
-
         output.append("}");
         return output.toString();
     }
