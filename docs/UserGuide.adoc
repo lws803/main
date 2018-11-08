@@ -149,6 +149,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears current positio
 * `edit all/ t/friends k/1.0` +
 Replaces all listed persons' tag to be `friends` and edits their KPI to be `1.0`. +
 
+// tag::search[]
 === Finding persons by attribute : `find`
 
 Finds persons whose names contain any of the given keywords. +
@@ -189,19 +190,21 @@ Displays any person having names `John` and `Betsy` who is a `secretary` and liv
 
 
 ===== Search guessing
-This feature will also display actual keyword matches to give you a good indicator of which words are guessed.
+This feature will also display actual *Keywords matched* and *Keywords guessed* to give you a good indicator of which words are guessed.
 
-image::find_results1.png[width]
+image::find_feature1.png[width="400"]
 
-From the above, we can see that `Marcuu` was not matched and thus it is not shown in the output for keyword(s) matched. +
-Despite not matching the actual name, person `Marcus Phua Zheng Jie` will still be shown as search will attempt to guess the next closest keyword to the one you entered.
 
-NOTE: If the keywords entered bears no similarity with any keywords among the contacts in your address book, it will list all your contacts.
+From the above results we can see that `Bernicc` yields `Keywords guessed: {Bernice}` whereas `Alex` yields `Keywords matched: {Alex}`
+
+NOTE: If the keywords entered bears no similarity with any keywords among the contacts in your address book, it will list all your contacts. This applies especially for text type parameters such as *name*, *addresses*, *tags*, *notes* and *position*
 
 Examples:
 
 * `find p/9123` +
-Displays any person having the phone number similar to `9123` eg. `91231231`, `91231234`, and so on. But it will show `0 keyword(s) matched`.
+Displays any person having the phone number similar to `9123` eg. `91231231`, `91231234`, and so on.
+
+// end::search[]
 
 === Deleting a person : `delete`
 
