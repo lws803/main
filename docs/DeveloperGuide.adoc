@@ -540,7 +540,8 @@ before filtering the list.
 
 *Step 11.* Model update event will be called and the address book UI will update accordingly. It will also display commandResult based on the `CommandResult` object created in Step 10.
 
-image::findfeature_seq.png[]
+image::findfeature_seq.png[width="900"]
+
 // TODO: Elaborate further into the ClosestMatchList class
 
 
