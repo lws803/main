@@ -165,7 +165,7 @@ public class ClosestMatchList {
                         distNamePair = new Pair(dist, nameSegment);
                     }
 
-                } else if (algorithm == Algorithm.Hamming){
+                } else if (algorithm == Algorithm.Hamming) {
                     dist = HammingDistanceUtil.getDistance(nameArg, nameSegment);
 
                     if (dist <= threshold) {

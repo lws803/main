@@ -1,8 +1,11 @@
 //@@author lws803
 package seedu.address.commons.util;
 
-public interface HammingDistanceUtil {
 
+/**
+ * Finds similarity of texts based on hamming distance
+ */
+public interface HammingDistanceUtil {
 
     /**
      * Find Hammign distance between two strings
