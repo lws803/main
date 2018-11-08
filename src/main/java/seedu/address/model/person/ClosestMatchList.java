@@ -103,7 +103,7 @@ public class ClosestMatchList {
      * similarity indexes using levensthein distances together with nameSegment
      */
     private void generateNameMapFromAttrib (String[] searchKey, Person person, Prefix myPrefix) {
-        String compareString = person.getName().fullName;
+        String compareString = null;
         int threshold = Integer.MAX_VALUE;
         Algorithm algorithm = Algorithm.Levensthein;
 
@@ -113,7 +113,9 @@ public class ClosestMatchList {
             algorithm = Algorithm.Hamming;
 
         } else if (myPrefix == PREFIX_NAME) {
+
             compareString = person.getName().fullName;
+
         } else if (myPrefix == PREFIX_EMAIL) {
             compareString = person.getEmail().value;
         } else if (myPrefix == PREFIX_ADDRESS) {
@@ -132,13 +134,12 @@ public class ClosestMatchList {
                 compareString = person.getStringTags();
             }
         } else if (myPrefix == PREFIX_KPI) {
+            algorithm = Algorithm.Hamming;
+            threshold = 0;
             if (person.getKpi().value != null) {
-                algorithm = Algorithm.Hamming;
-                threshold = 0;
                 compareString = person.getKpi().value;
             }
         }
-
         generateNameMap(searchKey, compareString, threshold, algorithm);
     }
 
@@ -149,7 +150,11 @@ public class ClosestMatchList {
      * @param compareString obtained from personList as per attribute
      */
     private void generateNameMap(String[] searchKey, String compareString, Integer threshold, Algorithm algorithm) {
+        if (compareString == null) {
+            return;
+        }
         String[] stringSplitted = compareString.split("\\s+");
+
         for (String nameSegment: stringSplitted) {
 
             for (String nameArg: searchKey) {

@@ -278,6 +278,11 @@ public class FindCommandTest {
 
     }
 
+    /**
+     * Checks if an array of strings match exactly
+     * @param actual actual array of strings
+     * @param expected expected array of strings
+     */
     private void assertEqualsArray (String[] actual, String[] expected) {
         assertEquals(actual.length, expected.length);
         for (int i = 0; i < expected.length; i++) {

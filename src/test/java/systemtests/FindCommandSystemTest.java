@@ -29,14 +29,14 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         Model expectedModel = getModel();
         ModelHelper.setFilteredList(expectedModel, BENSON, DANIEL, ELLE);
         // first names of Benson and Daniel are "Meier"
-        assertCommandSuccess(command, expectedModel,"{Meier}", "{Meyer}");
+        assertCommandSuccess(command, expectedModel, "{Meier}", "{Meyer}");
         assertSelectedCardUnchanged();
 
         /* Case: repeat previous find command where person list is displaying the persons we are finding
          * -> 2 persons found
          */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + KEYWORD_MATCHING_MEIER;
-        assertCommandSuccess(command, expectedModel,"{Meier}", "{Meyer}");
+        assertCommandSuccess(command, expectedModel, "{Meier}", "{Meyer}");
         assertSelectedCardUnchanged();
 
         /**
@@ -45,7 +45,7 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
          */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + " Carl";
         ModelHelper.setFilteredList(expectedModel, CARL);
-        assertCommandSuccess(command, expectedModel,"{Carl}", "{}");
+        assertCommandSuccess(command, expectedModel, "{Carl}", "{}");
         assertSelectedCardUnchanged();
 
         /* Case: find multiple persons in address book, 2 keywords -> 2 persons found */
@@ -62,13 +62,13 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: find multiple persons in address book, 2 keywords in reversed order -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + " Daniel Benson";
-        assertCommandSuccess(command, expectedModel,"{Benson, Daniel}", "{}");
+        assertCommandSuccess(command, expectedModel, "{Benson, Daniel}", "{}");
 
         assertSelectedCardUnchanged();
 
         /* Case: find multiple persons in address book, 2 keywords with 1 repeat -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + " Daniel Benson Daniel";
-        assertCommandSuccess(command, expectedModel,"{Benson, Daniel}", "{}");
+        assertCommandSuccess(command, expectedModel, "{Benson, Daniel}", "{}");
 
         assertSelectedCardUnchanged();
 
@@ -76,7 +76,7 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
          * -> 2 persons found
          */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + " Daniel Benson NonMatchingKeyWord";
-        assertCommandSuccess(command, expectedModel,"{Benson, Daniel}", "{}");
+        assertCommandSuccess(command, expectedModel, "{Benson, Daniel}", "{}");
 
         assertSelectedCardUnchanged();
 
@@ -96,13 +96,13 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + KEYWORD_MATCHING_MEIER;
         expectedModel = getModel();
         ModelHelper.setFilteredList(expectedModel, DANIEL, ELLE);
-        assertCommandSuccess(command, expectedModel,"{Meier}", "{Meyer}");
+        assertCommandSuccess(command, expectedModel, "{Meier}", "{Meyer}");
 
         assertSelectedCardUnchanged();
 
         /* Case: find person in address book, keyword is same as name but of different case -> 1 person found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + " MeIeR";
-        assertCommandSuccess(command, expectedModel,"{Meier}", "{Meyer}");
+        assertCommandSuccess(command, expectedModel, "{Meier}", "{Meyer}");
         assertSelectedCardUnchanged();
 
         /* Case: mixed case command word -> rejected */
