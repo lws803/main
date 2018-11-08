@@ -176,14 +176,16 @@ public class MailCommand extends Command {
      * @param uriToMail URI specifying the recipients.
      */
     private void sendWithUri(URI uriToMail) throws CommandException {
-        if (System.getProperty("os.name").equals("Windows") || System.getProperty("os.name").equals("Mac")) {
+        String os = System.getProperty("os.name");
+        if (os.toLowerCase().contains("windows") || os.toLowerCase().contains("mac")) {
             try {
                 desktop.mail(uriToMail);
             } catch (UnsupportedOperationException | IOException | SecurityException e) {
                 throw new CommandException(e.getMessage());
             }
         } else {
-            // Unfortunately due to a bug in Desktop class, a new thread has to be used to prevent app freezing.
+            // Unfortunately due to a bug in Desktop class, a new thread has to be used to prevent app freezing when
+            // this app is running in  some Linux distros like Ubuntu.
             // This however, means an exception cannot be easily thrown from the thread.
             // Solution adapted from :
             // https://stackoverflow.com/questions/23176624/javafx-freeze-on-desktop-openfile-desktop-browseuri
