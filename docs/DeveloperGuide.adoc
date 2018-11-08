@@ -542,6 +542,8 @@ before filtering the list.
 *Step 11.* Model update event will be called and the address book UI will update accordingly. It will also display commandResult based on the `CommandResult` object created in Step 10.
 
 image::findFeature_seq.png[width="900"]
+Figure 1. Interactions inside the logic component for the `find a/Clementi t/owesMoney` command.
+
 
 // TODO: Elaborate further into the ClosestMatchList class
 
