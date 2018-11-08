@@ -163,7 +163,7 @@ public class FindCommand extends Command {
             if (keywordsSet.contains(match) || keywordsSet.contains(match.replaceAll(",", ""))) {
                 actualMatchesStrings.add(match.replaceAll(",", ""));
             } else {
-                guessedMatchesStrings.add(match);
+                guessedMatchesStrings.add(match.replaceAll(",", ""));
             }
         }
     }

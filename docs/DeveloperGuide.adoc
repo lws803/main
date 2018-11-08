@@ -516,6 +516,34 @@ results furthest away from the top few are ignored. The searches will then be pa
 (`NameContainsKeywordsPredicate`, `AddressContainsKeywordsPredicate`, `EmailContainsKeywordsPredicate`, `KpiContainsKeywordPredicate`, `NoteContainsKeywordsPredicate`, `PhoneContainsKeywordPredicate`, `PositionContainsKeywordsPredicate`, `TagContainsKeywordsPredicate`)
 before filtering the list.
 
+====== Searching for a contact:
+
+*Step 1.* The user executes `find a/Clementi t/owesMoney` to find all contacts staying in Clementi and bearing the `owesMoney` tag. +
+
+*Step 2.* The user input is parsed by `AddressBookParser` which creates a new `FindCommandParser` object. +
+
+*Step 3.* The arguments `a/Clementi t/owesMoney` are then parsed by the `FindCommandParser`. +
+
+*Step 4.* `FindCommandParser` then checks the validity of the arguments before it creates the `FindCommand` object. +
+
+*Step 5.* `FindCommand` creates a `FileEncryptor` object to check if the address book is in a locked state by calling the `islocked()` method. +
+
+*Step 6.* If not, it then proceeds to create `ClosestMatchList` objects. +
+
+*Step 7.* It uses the list of keywords obtained from `ClosestMatchList` to create `AddressContainsKeywordsPredicate` and `TagContainsKeywordsPredicate`. +
+
+*Step 8.* These predicates are combined into a `combinedPredicate` object using the AND operation. +
+
+*Step 9.* The model is then updated by calling `model.updateFilteredPersonList(combinedPredicate)` together with the combined predicate obtained in step 8. +
+
+*Step 10.* A `CommandResult` object will be created and an internal method `findActualMatches` will be called to generate a string of keywords that are exact matches and keywords that are guessed. +
+
+*Step 11.* Model update event will be called and the address book UI will update accordingly. It will also display commandResult based on the `CommandResult` object created in Step 10.
+
+image::findfeature_seq.png[]
+// TODO: Elaborate further into the ClosestMatchList class
+
+
 // end::search[]
 
 // tag::schedule[]
