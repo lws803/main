@@ -13,7 +13,7 @@ public class Trie {
     /**
      * Class constants
      */
-    private static final char CHAR_ROOT = '.';
+    private static final char CHAR_ROOT = '`';
     private static final char CHAR_SPACE = ' ';
 
     /**
@@ -28,17 +28,16 @@ public class Trie {
      */
     public Trie(ArrayList<String> inputList) {
         root = new TrieNode(CHAR_ROOT);
-        baseList = new ArrayList<>(inputList);
-        init();
+        baseList = new ArrayList<>();
+        init(inputList);
     }
 
     /**
      * Initialises the Trie instance with the items in baseList
      */
-    private void init() {
-
-        for (int i = 0; i < baseList.size(); i++) {
-            this.insertToGraph(baseList.get(i));
+    private void init(ArrayList<String> inputList) {
+        for (int i = 0; i < inputList.size(); i++) {
+            this.insert(inputList.get(i));
         }
     }
 
@@ -47,6 +46,10 @@ public class Trie {
      * @param value
      */
     public void insert(String value) {
+        if (value == null || value.isEmpty()) {
+            return;
+        }
+
         // Check if this value exists
         if (!baseList.contains(value)) {
             insertToGraph(value);
@@ -94,6 +97,10 @@ public class Trie {
      * @param value the value to remove
      */
     public void remove(String value) {
+        if (value == null || value.isEmpty()) {
+            return;
+        }
+
         baseList.remove(value);
         // Check if this value exists
         if (!baseList.contains(value)) {
