@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.logic.parser.CliSyntax;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.trie.Trie;
@@ -132,21 +133,21 @@ public class CommandCompleter implements TextPrediction {
         PredictionType predictionType = getPredictionType(pair);
         switch (predictionType) {
         case PREDICT_COMMAND:
-            return commandTrie.getPredictList(pair.prefixValue);
+            return commandTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_NAME:
-            return nameTrie.getPredictList(pair.prefixValue);
+            return nameTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_ADDRESS:
-            return addressTrie.getPredictList(pair.prefixValue);
+            return addressTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_PHONE:
-            return phoneTrie.getPredictList(pair.prefixValue);
+            return phoneTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_EMAIL:
-            return emailTrie.getPredictList(pair.prefixValue);
+            return emailTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_TAG:
-            return tagTrie.getPredictList(pair.prefixValue);
+            return tagTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_POSITION:
-            return positionTrie.getPredictList(pair.prefixValue);
+            return positionTrie.getPredictList(pair.getPrefixValue());
         case PREDICT_KPI:
-            return kpiTrie.getPredictList(pair.prefixValue);
+            return kpiTrie.getPredictList(pair.getPrefixValue());
         default:
             return new ArrayList<>();
         }
@@ -257,21 +258,22 @@ public class CommandCompleter implements TextPrediction {
      * @return the type of prefix.
      */
     private PredictionType getPredictionType(AutoCompleteParserPair pair) {
-        if (pair.predictionType.equals(CliSyntax.PREFIX_TAG)) {
+        Prefix type = pair.getPrefixType();
+        if (type.equals(CliSyntax.PREFIX_TAG)) {
             return PredictionType.PREDICT_TAG;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_EMAIL)) {
+        } else if (type.equals(CliSyntax.PREFIX_EMAIL)) {
             return PredictionType.PREDICT_EMAIL;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_ADDRESS)) {
+        } else if (type.equals(CliSyntax.PREFIX_ADDRESS)) {
             return PredictionType.PREDICT_ADDRESS;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_PHONE)) {
+        } else if (type.equals(CliSyntax.PREFIX_PHONE)) {
             return PredictionType.PREDICT_PHONE;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_NAME)) {
+        } else if (type.equals(CliSyntax.PREFIX_NAME)) {
             return PredictionType.PREDICT_NAME;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_POSITION)) {
+        } else if (type.equals(CliSyntax.PREFIX_POSITION)) {
             return PredictionType.PREDICT_POSITION;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_KPI)) {
+        } else if (type.equals(CliSyntax.PREFIX_KPI)) {
             return PredictionType.PREDICT_KPI;
-        } else if (pair.predictionType.equals(CliSyntax.PREFIX_COMMAND)) {
+        } else if (type.equals(CliSyntax.PREFIX_COMMAND)) {
             return PredictionType.PREDICT_COMMAND;
         } else {
             return PredictionType.PREDICT_INVALID;
