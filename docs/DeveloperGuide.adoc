@@ -343,7 +343,7 @@ Step 3. The user re-opens the addressbook. No data will be shown as XML data fil
 Step 4. The user enters the password command with the right password. Addressbook will be refreshed and restored back to its former state (before encryption).
 
 [NOTE]
-If the user enters the wrong password, an error will be thrown at the CommandResult box.
+If the user enters the wrong password , an error will be thrown at the CommandResult box.
 
 
 ==== Design Considerations
@@ -357,6 +357,46 @@ If the user enters the wrong password, an error will be thrown at the CommandRes
 ===== Aspect: Pros and cons of tight security
 ** Pros: Your data is protected and it will be near impossible to use any third part tool to crack the data file.
 ** Cons: Data will be *permanently* lost if you forget the password.
+
+====== Encrypting the address book:
+
+*Step 1.* The user executes `password test` to encrypt the address book with `test` as the password. +
+
+*Step 2.* `PasswordCommandParser` checks for the validity of the input password (if its alpha-numeric) +
+
+*Step 3.* If password is acceptable, it is parsed to the `PasswordCommand` object +
+
+*Step 4.* Within the `PasswordCommand` object, a new `FileEncryptor` object is created and it will check if the address book is currently in a locked state +
+
+*Step 5.* If not, it will create a cipher and begin encrypting the address book with the input password. +
+
+*Step 6.* Previous `addressbook.xml` will be deleted whereas a new `addressbook.xml.encrypted` file will be created. +
+
+*Step 7.* A new `emptyPredicate` object will be instantiated and `model.updateFilteredPersonList(emptyPredicate)` will be called to clear the address book list. +
+
+*Step 8.* A `CommandResult` object will be created to notify the user that the encryption was successful +
+
+
+====== Accessing commands post encryption:
+
+*Step 1.* The user executes `list` to list out all the contacts in the address book. +
+
+*Step 2.* The user input is parsed by `AddressBookParser` which creates a new `ListCommandParser` object. +
+
+*Step 3.* The arguments are then parsed by the `ListCommandParser`. +
+
+*Step 4.* `ListCommandParser` then checks the validity of the arguments before it creates the `ListCommand` object. +
+
+*Step 5.* `ListCommand` creates a `FileEncryptor` object to check if the address book is in a locked state by calling the `islocked()` method. +
+
+*Step 6.* Assuming we have encrypted it earlier, isLocked() will return true. +
+
+*Step 7.* A `CommandException` will be thrown to warn the user that the address book is in a locked state.
+
+
+image::passwordCommand_seq.png[width="600"]
+Figure 1. Interactions inside the logic component for the `password` command.
+
 
 // end::dataencryption[]
 
@@ -544,9 +584,8 @@ before filtering the list.
 image::findFeature_seq.png[width="900"]
 Figure 1. Interactions inside the logic component for the `find a/Clementi t/owesMoney` command.
 
-
-// TODO: Elaborate further into the ClosestMatchList class
-
+image::closestMatchList_seq.png[width="500"]
+Figure 2. Interactions inside the `ClosestMatchList` class
 
 // end::search[]
 
