@@ -17,11 +17,6 @@ import seedu.address.model.trie.Trie;
 public class CommandCompleter implements TextPrediction {
 
     /**
-     * Text prediction parser to parse user input.
-     */
-    private AutoCompleteParser parser;
-
-    /**
      * Trie instances for various commands and arguments.
      */
     private Trie commandTrie;
@@ -50,7 +45,6 @@ public class CommandCompleter implements TextPrediction {
      * @param personList the list of persons whose data is to be added.
      */
     public CommandCompleter(List<Person> personList) {
-        this.parser = new AutoCompleteParser();
         this.commandList = new ArrayList<>();
         this.nameList = new ArrayList<>();
         this.phoneList = new ArrayList<>();
@@ -136,7 +130,7 @@ public class CommandCompleter implements TextPrediction {
      * @return predicted list of text
      */
     public ArrayList<String> predictText(String textInput) {
-        AutoCompleteParserPair pair = parser.parseCommand(textInput);
+        AutoCompleteParserPair pair = AutoCompleteParser.parseCommand(textInput);
         PredictionType predictionType = getPredictionType(pair);
         switch (predictionType) {
         case PREDICT_COMMAND:
