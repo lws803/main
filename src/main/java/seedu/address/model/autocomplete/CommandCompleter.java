@@ -2,6 +2,7 @@
 package seedu.address.model.autocomplete;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.logic.parser.CliSyntax;
@@ -14,11 +15,6 @@ import seedu.address.model.trie.Trie;
  * Completes the command for the user by predicting the possible substrings.
  */
 public class CommandCompleter implements TextPrediction {
-
-    /**
-     * Model instance to access data.
-     */
-    private Model model;
 
     /**
      * Text prediction parser to parse user input.
@@ -51,10 +47,9 @@ public class CommandCompleter implements TextPrediction {
 
     /**
      * Creates a command completer with the {@code model} data.
-     * @param model the data represented in the address book.
+     * @param personList the list of persons whose data is to be added.
      */
-    public CommandCompleter(Model model) {
-        this.model = model;
+    public CommandCompleter(List<Person> personList) {
         this.parser = new AutoCompleteParser();
         this.commandList = new ArrayList<>();
         this.nameList = new ArrayList<>();
@@ -64,16 +59,16 @@ public class CommandCompleter implements TextPrediction {
         this.tagList = new ArrayList<>();
         this.positionList = new ArrayList<>();
         this.kpiList = new ArrayList<>();
-        initLists();
+        initLists(personList);
         initTries();
     }
 
     /**
      * Initialises all words lists.
      */
-    private void initLists() {
+    private void initLists(List<Person> personList) {
         initCommandsList();
-        initAttributesLists();
+        initAttributesLists(personList);
     }
 
     /**
@@ -107,9 +102,8 @@ public class CommandCompleter implements TextPrediction {
     /**
      * Initialises attributes words lists with attribute value in each {@code Person}.
      */
-    private void initAttributesLists() {
-        ObservableList<Person> list = model.getAddressBook().getPersonList();
-        for (Person item : list) {
+    private void initAttributesLists(List<Person> personList) {
+        for (Person item : personList) {
             nameList.add(item.getName().fullName);
             phoneList.add(item.getPhone().value);
             emailList.add(item.getEmail().value);
@@ -302,8 +296,8 @@ public class CommandCompleter implements TextPrediction {
      * Reinitialise all data structures with given Model.
      */
     @Override
-    public void reinitialise() {
-        initLists();
+    public void reinitialise(List<Person> personList) {
+        initLists(personList);
         initTries();
     }
 }
