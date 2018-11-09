@@ -205,6 +205,8 @@ public class CommandCompleter implements TextPrediction {
         emailList.clear();
         addressList.clear();
         tagList.clear();
+        positionList.clear();
+        kpiList.clear();
     }
 
     /**
