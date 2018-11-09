@@ -28,8 +28,9 @@ public class Trie {
      */
     public Trie(ArrayList<String> inputList) {
         root = new TrieNode(CHAR_ROOT);
-        baseList = new ArrayList<>();
-        init(inputList);
+        root.setRootNode(true);
+        baseList = new ArrayList<>(inputList);
+        init();
     }
 
     /**
@@ -89,6 +90,7 @@ public class Trie {
      */
     public void clear() {
         root = new TrieNode(CHAR_ROOT);
+        root.setRootNode(true);
         baseList = new ArrayList<>();
     }
 
@@ -159,7 +161,7 @@ public class Trie {
         pointer.setEndNode(false);
 
         // Traverse upwards the trie.
-        while (!pointer.isEndNode() && pointer.getChildrenSize() == 0 && !pointer.equals(root)) {
+        while (!pointer.isEndNode() && pointer.getChildrenSize() == 0 && !pointer.isRootNode()) {
             TrieNode parent = pointer.getParent();
             parent.removeChild(pointer);
             pointer = parent;
@@ -178,7 +180,7 @@ public class Trie {
         // skipToStartNode returns root node if the prefix does not exist in the Trie.
         TrieNode startNode = skipToStartNode(root, prefix);
 
-        if (startNode.equals(root)) {
+        if (startNode.isRootNode()) {
             return predictionsList;
         }
 
@@ -255,7 +257,7 @@ public class Trie {
      * @param pointer the starting node to traverse from
      */
     private void explore(StringBuilder charStack, TrieNode pointer) {
-        if (!pointer.equals(root)) {
+        if (!pointer.isRootNode()) {
             charStack.append(pointer.getValue());
         }
 
