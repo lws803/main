@@ -193,6 +193,7 @@ public class CommandCompleter implements TextPrediction {
      */
     @Override
     public void clearData() {
+        commandTrie.clear();
         nameTrie.clear();
         phoneTrie.clear();
         emailTrie.clear();
@@ -200,6 +201,12 @@ public class CommandCompleter implements TextPrediction {
         tagTrie.clear();
         positionTrie.clear();
         kpiTrie.clear();
+        commandList.clear();
+        nameList.clear();
+        phoneList.clear();
+        emailList.clear();
+        addressList.clear();
+        tagList.clear();
     }
 
     /**
@@ -287,10 +294,11 @@ public class CommandCompleter implements TextPrediction {
     }
 
     /**
-     * Reinitialise all data structures with given Model.
+     * Reinitialise all data structures with given list of persons.
      */
     @Override
     public void reinitialise(List<Person> personList) {
+        clearData();
         initLists(personList);
         initTries();
     }
