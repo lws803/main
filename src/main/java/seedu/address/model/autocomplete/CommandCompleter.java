@@ -4,9 +4,7 @@ package seedu.address.model.autocomplete;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.collections.ObservableList;
 import seedu.address.logic.parser.CliSyntax;
-import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.trie.Trie;
