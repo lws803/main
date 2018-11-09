@@ -373,7 +373,15 @@ All commands will be disabled during encryption, your data will be safely protec
 
 ** Note: You can use the same command to decrypt the file, just hit `password` and your correct password.
 
-NOTE: This feature does not actually store passwords. You will have to reenter the command followed by a password again after decryption to secure it.
+===== Safe analogy
+
+image::safe.png[width="200"]
+
+NOTE: This feature does not actually store passwords. You will have to secure it with a password again after decryption to secure it. +
+
+Treat this feature as if it is a *safe*, once you have locked it, you have to remember the password in order to unlock it again. +
+And once you have unlocked it, you are free to set a new password.
+
 
 Examples:
 
