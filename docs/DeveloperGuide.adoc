@@ -519,12 +519,12 @@ before filtering the list.
 // tag::schedule[]
 === Schedule
 ==== Current implementation
-Updating the Schedule is facilitated by the `ScheduleCommand` class which extends the `Command` class.
+Updating the *Schedule* is facilitated by the `ScheduleCommand` class which extends the `Command` class.
 `ScheduleAddCommand`, `ScheduleEditCommand` and `ScheduleDeleteCommand` further extends `ScheduleCommand` to add, edit and
-delete entries in the Schedule respectively.
+delete entries in the *Schedule* respectively.
 
 ===== Activity
-Each entry in the Schedule is an `Activity`. It consist of a `String` which takes the name of the activity
+Each entry in the *Schedule* is an `Activity`. It consists of a `String` which takes the name of the activity
 and the `Date`, of which the activity is due.
 
 ===== Schedule
@@ -553,7 +553,7 @@ whenever you update it. This is facilitated by `XmlAdaptedActivity` which stores
 `XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a list and is saved in `addressbook.xml`.
 
 ===== Usage scenarios
-Given below is are examples of usage scenarios of how the schedule behaves when you carry out `schedule` commands. +
+Given below are examples of usage scenarios of how the schedule behaves when you carry out `schedule` commands. +
 
 ====== Adding an activity:
 *Step 1.* The user executes `schedule-add d/01/01/2018 a/Complete report.` to add an activity to their schedule. +
@@ -565,74 +565,42 @@ Given below is are examples of usage scenarios of how the schedule behaves when 
 *Step 4.* `ScheduleAddCommandParser` checks the validity of the date and activity as input by the user. It then creates an
 `Activity` object. +
 
+[NOTE]
+If the date or the activity name is not valid, an error would be returned to the user instead of creating an `Activity` object.
+
 *Step 5.* `ScheduleAddCommandParser` then creates a new `ScheduleAddCommand` with the `activity` as its argument. +
 
-*Step 6.* `ScheduleAddCommand` calls `Model#addActivity()` which creates the `activity` in the `schedule`.
-`indicateAddressBookChanged()` is called within `Model#addActivity()` to raise an `AddressBookChangedEvent` that the information within the
+*Step 6.* `ScheduleAddCommand` is executed and calls `Model#addActivity()` which creates the `activity` in the `schedule`.
+
+[NOTE]
+Before calling `Model#addActivity()`, the address book is checked if it is encrypted with a password, via `FileEncryptor`.
+It the address book is locked, an error would be displayed to the user instead of carrying on with the command.
+
+*Step 7.* `indicateAddressBookChanged()` is called within `Model#addActivity()` to raise an `AddressBookChangedEvent`, that the information within the
 address book is changed.  +
 
-*Step 7.* The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
+*Step 8.* The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
 the display to show the correct information to the user. +
 
 The following sequence diagrams shows you how the add operation works: +
 
 image::scheduleAddSequenceDiagramLogic.png[width="900"]
-Figure 1. Interactions inside the Logic component for the `schedule-add d/01/01/2018 a/Complete report.` command
+Figure 1. Interactions inside the Logic component for the `schedule-add d/01/01/2018 a/Complete report.` command.
 [NOTE]
 The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
 
-[NOTE]
-If the date or the activity name is not valid, an error would be returned to the user instead of creating an `Activity` object.
-
-image::scheduleAddSequenceDiagramStorage.png[width="800"]
+image::scheduleAddSequenceDiagramStorage.png[width="700"]
 Figure 2. Interactions inside the Storage component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
-The figure above illustrates the sequence of *Step 6.* +
+The figure above illustrates the sequence of *Step 6.* and *Step 7.* +
 
-image::scheduleAddSequenceDiagramEvent.png[width="800"]
+image::scheduleAddSequenceDiagramEvent.png[width="700"]
 Figure 3. Interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
-The figure above illustrates the sequence of *Step 7.* +
+The figure above illustrates the sequence of *Step 8.* +
 
 [NOTE]
 Storage of each activity is facilitated by `XmlAdaptedActivity` which stores an `Activity` in an `XML` format. `XmlSerializableAddressBook` then appends each `XmlAdaptedActivity` into a list and is saved in `addressbook.xml`
-
-====== Deleting an activity:
-*Step 1.* The user executes `schedule-delete 2` to delete the activity at `INDEX 2` in their schedule. +
-
-*Step 2.* The user input is first parsed by `AddressBookParser` which creates a new `ScheduleDeleteCommandParser` object. +
-
-*Step 3.* `ScheduleDeleteCommandParser` checks the validity of the index as input by the user.
-
-*Step 4.* `ScheduleDeleteCommandParser` then creates a new `ScheduleDeleteCommand` with the `INDEX` as its argument. +
-
-*Step 5.* `ScheduleDeleteCommand` checks if the `INDEX` given is valid (within the size of the listed schedule) and calls
-`Model#deleteActivity()`
-
-*Step 6.* `Model#deleteActivity` deletes the corresponding `activity` from the `schedule`. `indicateAddressBookChanged()` is called
-within `Model#deleteActivity()` to raise an `AddressBookChangedEvent`, that the information within the
-address book is changed.  +
-
-*Step 7.* The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
-the display to show the correct information to the user. +
-
-The following sequence diagrams shows you how the delete operation works:
-
-image::scheduleDeleteSequenceDiagramLogic.png[width="900"]
-Figure 4. Interactions inside the Logic component for the `schedule-delete 2` command
-[NOTE]
-The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
-
-[NOTE]
-If the index is not valid, i.e. out of range, an error would be returned to the user instead of deleting an activity.
-
-image::scheduleDeleteSequenceDiagramStorage.png[width="900"]
-Figure 5. Interactions inside the Model component for the `schedule-delete 2` command
-[NOTE]
-The figure above illustrates the sequence of *Step 6.* +
-
-The interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-delete 2` command (*Step 7.*) are similar to *adding
-an activity* (see *Figure 3.*)
 
 ====== Editing an activity:
 *Step 1.* The user executes `schedule-edit 2 a/Interview intern.` to edit an activity at `INDEX 2` in their schedule. +
@@ -649,6 +617,14 @@ an activity* (see *Figure 3.*)
 *Step 6.* `ScheduleEditCommand` checks if the `INDEX` given is valid (within the size of the listed schedule) and calls
 `Model#updateActivity()`
 
+[NOTE]
+If the activity name or index is not valid, i.e. out of range, an error would be returned to the user instead of editing
+an activity.
+
+[NOTE]
+Before calling `Model#updateActivity()`, the address book is checked if it is encrypted with a password, via `FileEncryptor`.
+It the address book is locked, an error would be displayed to the user instead of carrying on with the command.
+
 *Step 7.* `Model#updateActivity()` updates the corresponding `activity` in the `schedule`.
 `indicateAddressBookChanged()` is called within `Model#updateActivity()` to raise an `AddressBookChangedEvent` that the information within the
 address book is changed.  +
@@ -656,26 +632,49 @@ address book is changed.  +
 *Step 8.* The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and
 updates the display to show the correct information to the user. +
 
-The following sequence diagrams shows you how the edit operation works:
+The following sequence diagrams shows how the edit operation works:
 
 image::scheduleEditSequenceDiagramLogic.png[width="900"]
-Figure 6. Interactions inside the Logic component for the `schedule-edit 2 a/Interview intern.` command
+Figure 4. Interactions inside the Logic component for the `schedule-edit 2 a/Interview intern.` command
 [NOTE]
 The figure above illustrates the sequence from *Step 1.* to *Step 6.* +
+
+image::scheduleEditSequenceDiagramStorage.png[width="700"]
+Figure 5. Interactions inside the Model component for the `schedule-edit 2 a/Interview intern.` command
+[NOTE]
+The figure above illustrates the sequence of  *Step 7.* +
+
+The interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-edit 2 a/Interview intern.`
+command (*Step 8.*) are similar to *adding an activity* (see *Figure 3.*)
+
+====== Deleting an activity:
+*Step 1.* The user executes `schedule-delete 2` to delete the activity at `INDEX 2` in their schedule. +
+
+*Step 2.* The user input is first parsed by `AddressBookParser` which creates a new `ScheduleDeleteCommandParser` object. +
+
+*Step 3.* `ScheduleDeleteCommandParser` checks the validity of the index as input by the user.
+
+*Step 4.* `ScheduleDeleteCommandParser` then creates a new `ScheduleDeleteCommand` with the `INDEX` as its argument. +
+
+*Step 5.* `ScheduleDeleteCommand` checks if the `INDEX` given is valid (within the size of the listed schedule) and calls
+`Model#deleteActivity()`
 
 [NOTE]
 If the activity name or index is not valid, i.e. out of range, an error would be returned to the user instead of editing
 an activity.
 
-
-image::scheduleEditSequenceDiagramStorage.png[width="900"]
-Figure 7. Interactions inside the Model component for the `schedule-edit 2 a/Interview intern.` command
 [NOTE]
-The figure above illustrates the sequence of  *Step 7.* +
+Before calling `Model#deleteActivity()`, the address book is checked if it is encrypted with a password, via `FileEncryptor`.
+It the address book is locked, an error would be displayed to the user instead of carrying on with the command.
 
-The interactions between the `EventCenter`, `UI` and `Storage` components for the `schedule-edit 2 a/Interview intern.`
-command (*Step 8.*) are similar to *adding
-an activity* (see *Figure 3.*)
+*Step 6.* `Model#deleteActivity` deletes the corresponding `activity` from the `schedule`. `indicateAddressBookChanged()` is called
+within `Model#deleteActivity()` to raise an `AddressBookChangedEvent`, that the information within the
+address book is changed.  +
+
+*Step 7.* The `UI` object, `schedulePanel` which is subscribed to the event, receives this updated information and updates
+the display to show the correct information to the user. +
+
+The sequence of deleting an activity is similar to editing an activity. Instead of updating the activity, it is deleted. (see *Figure 4.* and *Figure 5.*)
 
 ==== Design Considerations
 ===== Aspect: Data structure of Schedule
