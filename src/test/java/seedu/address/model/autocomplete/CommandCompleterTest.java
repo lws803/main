@@ -195,7 +195,7 @@ public class CommandCompleterTest {
 
     @Test
     public void reinitialise_initialModelWithPerson_updatedEntries() {
-        ModelStub modelStubWithAddPerson = new ModelStubWithAddPerson();
+        ModelStub modelStubWithAddPerson = new ModelStub();
         CommandCompleter commandCompleter =
                 new CommandCompleter(modelStubWithAddPerson.getAddressBook().getPersonList());
 
@@ -210,9 +210,11 @@ public class CommandCompleterTest {
     }
 
     private class ModelStub implements Model {
+        private AddressBook addressBook = getTypicalAddressBook();
+
         @Override
         public void addPerson(Person person) {
-            throw new AssertionError("This method should not be called.");
+            addressBook.addPerson(person);
         }
 
         @Override
@@ -222,7 +224,7 @@ public class CommandCompleterTest {
 
         @Override
         public ReadOnlyAddressBook getAddressBook() {
-            throw new AssertionError("This method should not be called.");
+            return addressBook;
         }
 
         @Override
@@ -359,20 +361,6 @@ public class CommandCompleterTest {
         @Override
         public List<Tag> getUniqueTagList() {
             throw new AssertionError("This method should not be called.");
-        }
-    }
-
-    private class ModelStubWithAddPerson extends ModelStub {
-        private AddressBook addressBook = getTypicalAddressBook();
-
-        @Override
-        public void addPerson(Person person) {
-            addressBook.addPerson(person);
-        }
-
-        @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return addressBook;
         }
     }
 }
