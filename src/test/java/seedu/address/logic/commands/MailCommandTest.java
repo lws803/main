@@ -44,6 +44,9 @@ public class MailCommandTest {
         String expectedMessage = MailCommand.MESSAGE_SUCCESS
                 + MailInputUtil.buildRecipients(new ArrayList<>(model.getSelectedPersons()));
 
+        System.setProperty("os.name", "windows");
+        CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
+        System.setProperty("os.name", "linux");
         CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
     }
 
@@ -55,6 +58,9 @@ public class MailCommandTest {
         String expectedMessage = MailCommand.MESSAGE_SUCCESS
                 + MailInputUtil.buildRecipients(new ArrayList<>(model.getFilteredPersonList()));
 
+        System.setProperty("os.name", "windows");
+        CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
+        System.setProperty("os.name", "linux");
         CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
     }
 
@@ -71,6 +77,9 @@ public class MailCommandTest {
         mailingList.removeIf(person -> !person.getTags().contains(tagToUse));
         String expectedMessage = MailCommand.MESSAGE_SUCCESS + MailInputUtil.buildRecipients(mailingList);
 
+        System.setProperty("os.name", "windows");
+        CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
+        System.setProperty("os.name", "linux");
         CommandTestUtil.assertCommandSuccess(mailCommand, model, commandHistory, expectedMessage, model);
     }
 
