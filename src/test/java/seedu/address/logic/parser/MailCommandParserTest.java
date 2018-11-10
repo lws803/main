@@ -1,9 +1,9 @@
 //@@author lekoook
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.commands.MailCommand.TYPE_ALL;
-import static seedu.address.logic.commands.MailCommand.TYPE_GROUPS;
-import static seedu.address.logic.commands.MailCommand.TYPE_SELECTION;
+import static seedu.address.logic.commands.MailCommand.MailType.TYPE_ALL;
+import static seedu.address.logic.commands.MailCommand.MailType.TYPE_GROUPS;
+import static seedu.address.logic.commands.MailCommand.MailType.TYPE_SELECTION;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.Test;

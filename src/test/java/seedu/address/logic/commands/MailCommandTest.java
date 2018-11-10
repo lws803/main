@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.MailCommand.MESSAGE_UNSUPPORTED;
-import static seedu.address.logic.commands.MailCommand.TYPE_ALL;
-import static seedu.address.logic.commands.MailCommand.TYPE_GROUPS;
-import static seedu.address.logic.commands.MailCommand.TYPE_SELECTION;
+import static seedu.address.logic.commands.MailCommand.MailType.TYPE_ALL;
+import static seedu.address.logic.commands.MailCommand.MailType.TYPE_GROUPS;
+import static seedu.address.logic.commands.MailCommand.MailType.TYPE_SELECTION;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.ArrayList;
@@ -122,7 +122,7 @@ public class MailCommandTest {
      * A MailCommand stub that throws CommandException
      */
     private class MailCommandStubThrowsException extends MailCommand {
-        public MailCommandStubThrowsException(int mailType) {
+        public MailCommandStubThrowsException(MailType mailType) {
             super(mailType);
         }
 
