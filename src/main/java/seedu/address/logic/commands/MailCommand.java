@@ -26,13 +26,6 @@ public class MailCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Emails the person using default application.";
 
-    /**
-     * Determine which contacts to mail to.
-     */
-    public static final int TYPE_SELECTION = 1;
-    public static final int TYPE_GROUPS = 2;
-    public static final int TYPE_ALL = 3;
-
     public static final String MESSAGE_SUCCESS = "Mailing to: ";
     public static final String MESSAGE_UNSUPPORTED = "System desktop is unsupported.";
     public static final String MESSAGE_EMPTY_SELECTION = "No contacts selected! Select one or more and try again.";
@@ -40,19 +33,19 @@ public class MailCommand extends Command {
     /**
      * Instance variables
      */
-    private int mailType;
+    private MailType mailType;
     private String mailArgs;
     private Desktop desktop;
 
     /**
      * Creates a default Mail command
      */
-    public MailCommand(int mailType) {
+    public MailCommand(MailType mailType) {
         this.mailType = mailType;
         desktop = Desktop.getDesktop();
     }
 
-    public MailCommand(int mailType, String mailArgs) {
+    public MailCommand(MailType mailType, String mailArgs) {
         this.mailType = mailType;
         this.mailArgs = mailArgs;
         desktop = Desktop.getDesktop();
@@ -165,5 +158,11 @@ public class MailCommand extends Command {
                 && this.mailType == ((MailCommand) other).mailType
                 && Objects.equals(this.mailArgs, ((MailCommand) other).mailArgs)
                 && Objects.equals(this.desktop, ((MailCommand) other).desktop));
+    }
+
+    public enum MailType {
+        TYPE_SELECTION,
+        TYPE_GROUPS,
+        TYPE_ALL
     }
 }

@@ -18,11 +18,11 @@ public class MailCommandParser implements Parser<MailCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_ALL, CliSyntax.PREFIX_TAG);
 
         if (argMultimap.getValue(CliSyntax.PREFIX_ALL).isPresent()) {
-            return new MailCommand(MailCommand.TYPE_ALL);
+            return new MailCommand(MailCommand.MailType.TYPE_ALL);
         } else if (argMultimap.getValue(CliSyntax.PREFIX_TAG).isPresent()) {
-            return new MailCommand(MailCommand.TYPE_GROUPS, argMultimap.getValue(CliSyntax.PREFIX_TAG).get());
+            return new MailCommand(MailCommand.MailType.TYPE_GROUPS, argMultimap.getValue(CliSyntax.PREFIX_TAG).get());
         } else {
-            return new MailCommand(MailCommand.TYPE_SELECTION);
+            return new MailCommand(MailCommand.MailType.TYPE_SELECTION);
         }
     }
 }
