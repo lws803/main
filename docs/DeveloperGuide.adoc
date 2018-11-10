@@ -733,7 +733,7 @@ command (*Step 8.*) are similar to *adding an activity* (see *Figure 3.*)
 `Model#deleteActivity()`
 
 [NOTE]
-If the activity name or index is not valid, i.e. out of range, an error would be returned to the user instead of editing
+If the index is not valid, i.e. out of range, an error would be returned to the user instead of deleting
 an activity.
 
 [NOTE]

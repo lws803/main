@@ -12,7 +12,7 @@
 *CorpPro* is a desktop address book application which targets Corporate Users. It helps its users better manage
 their information to increase efficiency and to produce effective results. *CorpPro*’s features aid users to find relevant
 details quickly, in addition to being able to create a schedule to plan and set goals. Users can create and update entries
-in *CorpPro* through the command-line interface(CLI), as well as having an uncluttered user interface(UI) to display corresponding
+in *CorpPro* through the command-line interface (CLI), as well as having an uncluttered user interface (UI) to display corresponding
 information. It is made using Java, a widely used programming language, with over 10 thousand lines written.
 
 == Summary of contributions
@@ -21,7 +21,7 @@ information. It is made using Java, a widely used programming language, with ove
 ** What it does: The following attributes have been added:
      *** Position/rank
      *** Tag priority
-     *** Key Performance Index(KPI)
+     *** Key Performance Index (KPI)
      *** Note/Description
 ** Justification: As a corporate user with many contacts, there is a need have additional fields and attributes to catagorize or
 search for them quickly. Users can use tags to assign an importance level to each contact. The Key Performing Index (KPI)
@@ -35,7 +35,7 @@ are sorted by date and can be edited or deleted when completed. The schedule is 
 ** Justification: Corporate users may need to organise their assignments in a schedule to maintain a methodical workstyle
 to increase efficiency and not to neglect any important tasks.
 ** Highlights: This feature required the creation of additional commands and the implementation of exporting the schedule to save
-its contents after the user has exit the application. In addition, a unique data structure had to be used to maintain a sorted schedule(by date).
+its contents after the user has exit the application. In addition, a unique data structure had to be used to maintain a sorted schedule (by date).
 
 * *Minor enhancement*: Enhanced the edit command to edit all listed entries in one command. This enables users to quickly update contacts in a similar category all at once, saving time and increasing
 efficiency.
