@@ -38,7 +38,7 @@ Responsibilities: Documentation
 
 === Low Gin Wee
 image::lowginwee.png[width="150", align="left"]
-{empty}[https://github.com/LowGinWee[github]][<<LowGinWee#, portfolio>>]
+{empty}[https://github.com/LowGinWee[github]][<<lowginwee#, portfolio>>]
 
 Role: Developer +
 Responsibilities: Deliverables and deadline
