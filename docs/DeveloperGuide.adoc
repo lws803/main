@@ -1348,6 +1348,28 @@ Use case ends.
 Use case ends.
 
 [discrete]
+=== Use case: Find persons
+*MSS*
+
+1. User requests to search by address
+2. Address book shows a list of persons living under that address
+3. User requests to search for a specific tag and the previous address
+4. Address book refines the search results by displaying people who live in the specified address and is tagged
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. No similar keywords within the address book.
++
+[none]
+** 2a1. Address book shows list of persons with similar keywords to the one originally searched.
++
+Use case resumes at step 3.
+
+
+[discrete]
 === Use case: Delete person
 
 *MSS*
@@ -1449,18 +1471,18 @@ Use case ends.
 Use case ends.
 
 [discrete]
-=== Use case: Encrypt addressbook
+=== Use case: Lock address book
 *MSS*
 
 1. User requests to encrypt addressbook with password
-2. Addressbook shows encrypted message
+2. Address book shows encrypted message
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Addressbook is already encrypted.
+* 1a. Address book is already encrypted.
 +
 [none]
 ** 1a1. Address book will decrypt the data instead with the given password.
@@ -1468,18 +1490,18 @@ Use case ends.
 Use case ends.
 
 [discrete]
-=== Use case: Decrypt addressbook
+=== Use case: Unlock address book
 *MSS*
 
-1. User requests to decrypt addressbook with password
-2. Addressbook shows decrypted message
+1. User requests to decrypt address book with password
+2. Address book shows decrypted message
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Addressbook is already decrypted.
+* 1a. Address book is already decrypted.
 +
 [none]
 ** 1a1. Address book will encrypt the data instead with the given password.
@@ -1488,7 +1510,7 @@ Use case ends.
 * 1b. Incorrect password entered.
 +
 [none]
-** 1b1. Addressbook will display incorrect password message.
+** 1b1. Address book will display incorrect password message.
 +
 Use case ends.
 
