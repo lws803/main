@@ -195,7 +195,7 @@ Displays any person having names `John` and `Betsy` who is a `secretary` and liv
 ==== Search guessing
 This feature will also display actual *Keywords matched* and *Keywords guessed* to give you a good indicator of which results were guessed.
 
-image::find_feature1.png[width="400"]
+image::find_feature1.png[width="250"]
 
 
 From the above results we can see that `Bernicc` yields `Keywords guessed: {Bernice}` whereas `Alex` yields `Keywords matched: {Alex}`
