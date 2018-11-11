@@ -13,7 +13,7 @@
 their information to increase efficiency and to produce effective results. *CorpPro*’s features aid users to find relevant
 details quickly, in addition to being able to create a schedule to plan and set goals. Users can create and update entries
 in *CorpPro* through the command-line interface (CLI), as well as having an uncluttered user interface (UI) to display corresponding
-information. It is made using Java, a widely used programming language, with over 10 thousand lines written.
+information. It is made using Java, a widely used programming platform.
 
 == Summary of contributions
 
@@ -43,14 +43,16 @@ for a quick and easy reference.
 * *Minor enhancement*: Enhanced the *edit command* to edit all listed entries in one command. This enables users to quickly update contacts, listed by a similar category, all at once, saving time and increasing
 efficiency.
 
-* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=lowginwee[RepoSense]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/functional/LowGinWee.md[Functional code]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/test/LowGinWee.md[Test code]]
+* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=lowginwee[RepoSense]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/functional/LowGinWee.md[Functional code]] [https://github.com/CS2113-AY1819S1-W12-3/main/blob/master/collated/test/LowGinWee.md[Test code]] [https://github.com/CS2113-AY1819S1-W12-3/main/pulls?q=is%3Apr+is%3Aclosed+author%3ALowGinWee[Pull Requests]]
 
 * *Other contributions*:
 
 ** Project management:
 *** Managed releases `v1.2` - `v1.4` (3 releases) on GitHub
 ** Enhancements to existing features:
+
 **** Updated the colour scheme, made cosmetic tweaks of UI, icon and labels (Pull Requests: https://github.com/CS2113-AY1819S1-W12-3/main/pull/118[#118], https://github.com/CS2113-AY1819S1-W12-3/main/pull/120[#120], https://github.com/CS2113-AY1819S1-W12-3/main/pull/130[#130], https://github.com/CS2113-AY1819S1-W12-3/main/pull/138[#138])
+** Issues resolved: https://github.com/CS2113-AY1819S1-W12-3/main/issues/143[1], https://github.com/CS2113-AY1819S1-W12-3/main/issues/148[2], https://github.com/CS2113-AY1819S1-W12-3/main/issues/153[3]
 
 ** Community:
 *** PRs reviewed (with non-trivial review comments): (Pull Requests: https://github.com/CS2113-AY1819S1-W12-3/main/pull/70[#70], https://github.com/CS2113-AY1819S1-W12-3/main/pull/86[#86])
