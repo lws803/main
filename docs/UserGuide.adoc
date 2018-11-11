@@ -442,8 +442,8 @@ Format: `schedule-edit INDEX a/ACTIVITY` +
 * The activity name *must contain only* letters, numbers, spaces and fullstops.
 ****
 
-* Example: `schedule-edit 1 a/Attend meeting with Alexia.` +
-To edit the following activity at `INDEX 1`:
+* Example: `schedule-edit 2 a/Attend meeting with Alexia.` +
+To edit the following activity "Attend meeting." at index `2`:
 +
 image::scheduleEditExample.png[width="400"]
 +
@@ -460,7 +460,7 @@ Format: `schedule-delete INDEX` +
 ****
 
 * Example: `schedule-delete 1` +
-Deletes the following activity at `INDEX 1` in your schedule:
+Deletes the following activity, "Do report", at index `1` in your schedule:
 +
 image::scheduleDeleteExample.png[width="400"]
 // end::schedule[]
