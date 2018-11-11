@@ -658,7 +658,7 @@ Additionally, it implements the following main operations:
 
 * `Schedule#add(Activity activity)` -- Add an `Activity` to `schedule`. +
 * `Schedule#delete(Activity activity)` -- Deletes an `Activity` from `schedule`. +
-* `Schedule#update(Activity target, Activity editedActivity) --Updates/edits an `Activity` in the `schedule`. `target` is the activity to be edited. `editedActivity` is the new, changed, activity. +
+* `Schedule#update(Activity target, Activity editedActivity)` -- Updates/edits an `Activity` in the `schedule`. `target` is the activity to be edited. `editedActivity` is the new, changed, activity. +
 * `Schedule#setSchedule(List<Activity> activities)` -- Sets `schedule` from a `list` of activities. This operation is executed when importing data from an `XML` file.
  This happens when you first start *CorpPro*.
 * `Schedule#getSchedule()` -- Returns the schedule with activities sorted by `Date` to be displayed in the GUI by `SchedulePanel` in the `UI` component.
