@@ -936,7 +936,7 @@ the display to show the correct information to the user. +
 
 The sequence of deleting an activity is similar to editing an activity. Instead of updating the activity , it is deleted. (see *Figure 4.* and *Figure 5.*)
 
-The interactions between the `EventCenter`, `UI` and `Storage` components for *deleting an activity* (*Step 7.*) are similar to *adding an activity* (see *Figure 3.*) 
+The interactions between the `EventCenter`, `UI` and `Storage` components for *deleting an activity* (*Step 7.*) are similar to *adding an activity* (see *Figure 3.*)
 
 ==== Design Considerations
 ===== Aspect: Data structure of Schedule
