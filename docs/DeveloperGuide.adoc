@@ -7,6 +7,7 @@
 :imagesDir: images
 :stylesDir: stylesheets
 :xrefstyle: full
+:experimental:
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -449,6 +450,62 @@ Hence, calling `getPredictList("wom")` will return a list containing the element
 
 * `"en"`
 * `"ble"`
+
+=== Text prediction
+
+==== Current Implementation
+
+The text prediction feature is fascilitated mainly by 2 classes, `CommandCompleter` and `Trie`. `Trie` contains the underlying data structure with a set of operations that allows predictions to be retrieved. `CommandCompleter` manages several instances of that data structure (`Trie`) such that predictions of different attributes (name, email, address, etc.) and command keywords (add, edit, etc.) can be made. +
+
+For `Trie`, following operations are implemented:
+
+* `Trie#insert(String value)` -- inserts a string into the data structure.
+* `Trie#remove(String value)` -- removes a string from the data structure.
+* `Trie#getPredictList(String prefix)` -- retrieve a list of predicted string values that completes the prefix.
+
+For `CommandCompleter`, following operations are implemented:
+
+* `CommandCompleter#insertPerson(Person person)` -- inserts a Person’s attributes into respective data structure instances.
+* `CommandCompleter#removePerson(Person person)` -- removes a Person’s attributes from respective data structure instances.
+* `CommandCompleter#editPerson(Person personToEdit, Person editedPerson)` -- edits a Person’s attributes in each data structure instances.
+* `CommandCompleter#predictText(String textInput)` -- predicts  a list of possible text outputs that will complete and append to the given `textInput`.
+* `CommandCompleter#clearData()` -- clears all data structure instances of their data.
+* `CommandCompleter#reinitialise(List<Person> personList)` -- replace all data structure instances with data from the given `personList`.
+
+The above operations for `CommandCompleter` are exposed in the `Text Prediction` interface.
+
+Given below is an example usage scenario and how the text prediction mechanism beahves at each step. +
+
+Step 1. The user launches the application. `CommandCompleter` is instantiated and will initialise all data structure instances (`Trie`) with all command keywords and every contact’s (aka Person) attributes (name, phone, address, etc.). Command keywords and each contact attribute using one instance of `Trie`. All of which are managed through the `CommandCompleter`.
+
+Step 2. The user keys in `find n/Al` into the command box and presses kbd:[Tab]. The kbd:[Tab] press will invoke `getCmdPrediction` method exposed by `Logic` interface of which `predictText` exposed by `Text Prediction` will then be invoked. `predictText` will subsequently determine (assisted by several helper classes) if a command keyword or a contact attribute should be predicted. In this case, name attribute (`n/`) is determined. Once determined, the respective `Trie` (underlying data structure) instance’s `getPredictList(String prefix)`  will be called with `Al` input by the user being the `prefix`. +
+
+`getPredictList(String prefix)` then executes a sequence of logic (see Appendix __ for low level implementation details) to return a list of possible predictions, in this case `ex Yeoh`, back to `CommandCompleter`. This list of predictions is then displayed on the feedback panel.
+
+Step 3. The user decides to add a new contact with the name `Alex Tan` using the `add` command. In the `add` logic, the method `Model#insertPersonIntoPrediction(Person person)` will be called which will call the `TextPrediction#insertPerson(Person person)` method. This method inserts each attribute of the contact (Alex Tan) into the respective Trie instances.
+
+Step 4. The user decides to predict `find n/Al` again, similar to Step 2. The logic sequence that follows is the same as Step 2. However, since a new contact was added in Step 3, the name (Alex Tan) was inserted into the name attribute Trie instance as well. Thus, instead of returning `ex Yeoh` only, the returning list will contain both `ex Yeoh` and `ex Tan`. Which will be displayed in the feedback panel.
+
+Step 5. The user now decides to remove the contact with the name `Alex Yeoh` from the address book using the `delete1 command. In the `delete` logic, the method `Model#removePersonFromPrediction(Person person)` will be called which will call the `TextPrediction#removePerson(Person person)` methid. This method removes each attribute of the contact (Alex Yeoh) from the respective Trie instances.
+
+Step 6. The user decides to predict `find n/Al` again. Similar to Step 4, except that Alex Yeoh has been removed, the list returned will contain only `ex Tan`.
+
+Step 7. The user decides to clear the address book with `clear` command which invokes the `Model#clearInPrediction()` which then invokes `TextPrediction#clearData()`. This clears all attributes data in each Trie instances.
+
+Step 8. The user wants to predict `find n/Al` again. However since all data are clear, the returned predictions list contains no entries. No predictions are displayed in feedback panel.
+
+==== Design Considerations
+
+===== Aspect: How to determine which attribute to predict
+
+===== Aspect: Data structure to support text prediction
+
+* **Alternative 1 (current choice):** Use a Directed Acyclic Graph to store strings.
+** Pros: Results in greater computational efficiency than the naive approach (Alternative 2).
+** Cons: Much more difficult to implement and prone to bugs.
+* **Alternative 2:** Use a list to store strings.
+** Pros: Much more easier and simple to implement.
+** Cons: Inefficient and takes longer time to retrive the strings. Since the address book can potentially contain a large number of contacts, retrieval of strings may take too long, which results in a slow application.
 
 // tag::backuprestore[]
 === Back Up and Restore
