@@ -13,7 +13,7 @@
 their information to increase efficiency and to produce effective results. *CorpPro*’s features aid users to find relevant
 details quickly, in addition to being able to create a schedule to plan and set goals. Users can create and update entries
 in *CorpPro* through the command-line interface (CLI), as well as having an uncluttered user interface (UI) to display corresponding
-information. It is made using Java, a widely used programming language, with over 10 thousand lines written.
+information. It is made using Java, a widely used programming platform.
 
 == Summary of contributions
 
