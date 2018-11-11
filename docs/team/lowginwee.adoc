@@ -37,8 +37,7 @@ to increase efficiency and not to neglect any important tasks.
 ** Highlights: This feature required the creation of additional commands and the implementation of exporting the schedule to save
 its contents after the user has exit the application. In addition, a unique data structure had to be used to maintain a sorted schedule (by date).
 
-* *Minor enhancement*: The *add command* automatically parsers the contact's name to capitalize the first letter and remove additional spaces. This is to standardize contacts in the address book
-for a quick and easy reference.
+* *Minor enhancement*: The *add command* automatically parsers the contact's name to capitalize the first letter of each word and remove additional spaces. This is to standardize contacts in the address book for a quick and easy reference.
 
 * *Minor enhancement*: Enhanced the *edit command* to edit all listed entries in one command. This enables users to quickly update contacts, listed by a similar category, all at once, saving time and increasing
 efficiency.
