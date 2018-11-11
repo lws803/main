@@ -9,11 +9,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MailCommandParser implements Parser<MailCommand> {
 
-    public static String MESSAGE_MULTIPLE_ARGS = "Please specify only ONE argument type!\n"
+    public static final String MESSAGE_MULTIPLE_ARGS = "Please specify only ONE argument type!\n"
             + "%s\n"
             + "%s";
-    public static String MESSAGE_CORRECT_EG = "CORRECT Eg: mail t/subordinates";
-    public static String MESSAGE_WRONG_EG = "WRONG Eg: mail t/subordinates all/";
+    public static final String MESSAGE_CORRECT_EG = "CORRECT Eg: mail t/subordinates";
+    public static final String MESSAGE_WRONG_EG = "WRONG Eg: mail t/subordinates all/";
 
     /**
      * Parses the arguments of a mail command.

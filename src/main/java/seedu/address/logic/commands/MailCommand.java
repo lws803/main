@@ -160,6 +160,9 @@ public class MailCommand extends Command {
                 && Objects.equals(this.desktop, ((MailCommand) other).desktop));
     }
 
+    /**
+     * Enumerations to help determine the mailType.
+     */
     public enum MailType {
         TYPE_SELECTION,
         TYPE_GROUPS,
