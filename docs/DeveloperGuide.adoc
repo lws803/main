@@ -712,7 +712,7 @@ Figure 1. Interactions inside the Logic component for the `schedule-add d/01/01/
 [NOTE]
 The figure above illustrates the sequence from *Step 1.* to *Step 5.* +
 
-image::scheduleAddSequenceDiagramStorage.png[width="700"]
+image::scheduleAddSequenceDiagramStorage.png[width="650"]
 Figure 2. Interactions inside the Storage component for the `schedule-add d/01/01/2018 a/Complete report.` command
 [NOTE]
 The figure above illustrates the sequence of *Step 6.* and *Step 7.* +
