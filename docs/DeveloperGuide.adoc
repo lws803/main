@@ -1815,6 +1815,13 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
+=== Adding a person
+. Adding a person to the address book.
+   Prerequisites: Carry out the following commands sequentially:
+.. Test case: `add n/Alexia Tok p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: The person is added to the contact list.
+.. Test case: `add n/Alexia Tok p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the person "Alexia Tok" is already in the contact list. Error details shown in the status message.
 
 === Deleting a person
 
@@ -1833,6 +1840,7 @@ _{ more test cases ... }_
 === Updating the Schedule
 
 . Updating activities in the schedule
+    Prerequisites: Carry out the following commands sequentially:
 .. Test case: `schedule-add d/30/10/2018 a/Attend meeting with Alex.` +
    Expected: activity "Attend meeting with Alex." is added to the schedule.
 .. Test case: `schedule-add d/30/10/2018 a/Attend meeting with Alex.` +
