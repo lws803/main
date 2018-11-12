@@ -1735,6 +1735,54 @@ Use case ends.
 ** 1a1. Address book displays format error. +
 Use case ends.
 
+[discrete]
+=== Use case: Add an activity to the schedule
+*MSS*
+
+1. User requests to add an activity to the schedule. +
+2. Address book adds the activity to the schedule +
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Input command has invalid format.
+[none]
+** 1a1. Address book displays format error. +
+Use case ends.
+
+=== Use case: Edit an activity in the schedule
+*MSS*
+
+1. User requests to edit an activity in the schedule. +
+2. Address book edits the activity in the schedule +
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Input command has invalid format.
+[none]
+** 1a1. Address book displays format error. +
+Use case ends.
+
+=== Use case: Delete an activity from the schedule
+*MSS*
+
+1. User requests to delete an activity from the schedule. +
+2. Address book delete the activity from the schedule +
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Input command has invalid format.
+[none]
+** 1a1. Address book displays format error. +
+Use case ends.
+
+
+
 [appendix]
 == Non Functional Requirements
 
@@ -1780,6 +1828,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
+
 === Deleting a person
 
 . Deleting a person while all persons are listed
@@ -1794,11 +1843,28 @@ _{ more test cases ... }_
 
 _{ more test cases ... }_
 
+=== Updating the Schedule
+
+. Updating activities in the schedule
+.. Test case: `schedule-add d/30/10/2018 a/Attend meeting with Alex.` +
+   Expected: activity "Attend meeting with Alex." is added to the schedule.
+.. Test case: `schedule-add d/30/10/2018 a/Attend meeting with Alex.` +
+   Expected: another activity, "Attend meeting with Alex.", is added to the schedule.
+.. Test case: `schedule-edit 2 a/Attend meeting with Alexia.` +
+   Expected: The second activity is edited to "Attend meeting with Alexia.".
+.. Test case: `schedule-edit 0 a/Test bugs` +
+   Expected: No activity is edited. Error details shown in the status message. Schedule panel remains the same.
+.. Test case: `schedule-delete 1` +
+   Expected: First activity is deleted from the schedule.
+.. Test case: `schedule-delete 0` +
+   Expected: No activity is deleted. Error details shown in the status message.
+
+
 === Saving data
 
 . Dealing with missing/corrupted data files
 
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
-_{ more test cases ... }_
+
 
