@@ -1822,6 +1822,62 @@ _{ more test cases ... }_
    Expected: The person is added to the contact list.
 .. Test case: `add n/Alexia Tok p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
    Expected: No person is added as the person "Alexia Tok" is already in the contact list. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/23q e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the phone number is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/ATexamplecom a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the email is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/... k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the position is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/6 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the kpi is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/?#$% t/friend t/colleague 2` +
+   Expected: No person is added as the note is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 3` +
+   Expected: No person is added as the tag is invalid. Error details shown in the status message.
+
+=== Editing a person
+. Editing a person in the address book.
+    Prerequisites: There are multiple persons in the contact list.
+.. Test case: `edit 1 p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: The first person in the contact list is edited.
+.. Test case: `edit 0 p/12345678` +
+   Expected: No person is edited. Error details shown in status message.
+.. Test case: `edit all/ n/Hercules fatty` +
+   Expected: No persons is edited. Error details shown in status message.
+
+
+=== Searching for a person
+. Finding a person in the address book.
+    Prerequisites: The following commands must be entered, "Alexia Tok" and "Marcus Tok" must exist within the contact list: +
+    `add n/Alexia Tok p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+    `add n/Marcus Tok p/12341234 e/MT@example.com a/123, Admiraly, 1234665 r/Cleaner k/4.0 d/MT is a bad cleaner t/notFriend t/colleague 2`
+
+.. Test case: `find n/Tok` +
+    Expected: "Marcus Tok" and "Alexia Tok" will show up in the contacts panel.
+.. Test case: `find k/4.0` +
+    Expected: "Marcus Tok" will show up in the contacts panel.
+.. Test case: `find k/4` +
+    Expected: "Marcus Tok" and "Alexia Tok" will show up in the contacts panel.
+.. Test case: `find r/bass` +
+    Expected: "Alexia Tok" with position "Boss" will show up in the contacts panel. `Keywords guessed: {Boss}` will show at the status message as "bass" is a closer match to "Boss"
+
+=== Locking and unlocking
+. Locking and unlocking of the address book.
+    Prerequisites: Address book should not be locked. Check path at `./data/addressbook.xml` to ensure that it is not encrypted: `addressbook.xml.encrypted` and that `addressbook.xml` exists.
+.. Test case: `password hello` +
+    Expected: A status message "File encrypted!" will be displayed to the user and the contacts panel will be cleared. All further commands at this point will show a message "Address book is locked, please key in password". +
++
+NOTE: Schedule panel will still be visible and not cleared. But the user will not be able to update it. Closing and re-opening the address book will clear it.
+
+.. Test case: `password test` +
+    Prerequisites: This test case should be carried out after the previous test case. +
+    Expected: A status message "Password mismatch!" will be displayed to the user and the address book will remain locked.
+
+.. Test case: `password hello` +
+    Prerequisites: This test case should be carried out after the previous test case *a.* +
+    Expected: A status message "File decrypted!" will be displayed to the user, the contacts panel and schedule will be refreshed to show the data that was encrypted. +
+
+
 
 === Deleting a person
 
