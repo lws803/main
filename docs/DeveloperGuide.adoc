@@ -1822,6 +1822,28 @@ _{ more test cases ... }_
    Expected: The person is added to the contact list.
 .. Test case: `add n/Alexia Tok p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
    Expected: No person is added as the person "Alexia Tok" is already in the contact list. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/23q e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the phone number is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/ATexamplecom a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the email is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/... k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the position is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/6 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: No person is added as the kpi is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/?#$% t/friend t/colleague 2` +
+   Expected: No person is added as the note is invalid. Error details shown in the status message.
+.. Test case: `add n/Bob Teo p/99008800 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 3` +
+   Expected: No person is added as the tag is invalid. Error details shown in the status message.
+
+=== Editing a person
+. Editing a person in the address book.
+    Prerequisites: There are multiple persons in the contact list.
+.. Test case: `edit 1 p/22224444 e/AT@example.com a/123, Potong Pasir, 1234665 r/Boss k/4.5 d/AT is a good friend t/friend t/colleague 2` +
+   Expected: The first person in the contact list is edited.
+.. Test case: `edit 0 p/12345678` +
+   Expected: No person is edited. Error details shown in status message.
+.. Test case: `edit all/ n/Hercules fatty` +
+   Expected: No persons is edited. Error details shown in status message.
 
 
 === Searching for a person
