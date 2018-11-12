@@ -1735,6 +1735,54 @@ Use case ends.
 ** 1a1. Address book displays format error. +
 Use case ends.
 
+[discrete]
+=== Use case: Add an activity to the schedule
+*MSS*
+
+1. User requests to add an activity to the schedule. +
+2. Address book adds the activity to the schedule +
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Input command has invalid format.
+[none]
+** 1a1. Address book displays format error. +
+Use case ends.
+
+=== Use case: Edit an activity in the schedule
+*MSS*
+
+1. User requests to edit an activity in the schedule. +
+2. Address book edits the activity in the schedule +
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Input command has invalid format.
+[none]
+** 1a1. Address book displays format error. +
+Use case ends.
+
+=== Use case: Delete an activity from the schedule
+*MSS*
+
+1. User requests to delete an activity from the schedule. +
+2. Address book delete the activity from the schedule +
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Input command has invalid format.
+[none]
+** 1a1. Address book displays format error. +
+Use case ends.
+
+
+
 [appendix]
 == Non Functional Requirements
 
