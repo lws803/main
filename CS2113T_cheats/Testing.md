@@ -126,6 +126,7 @@ While execution of testing process the system correctness testing is performed b
 
 ```
 
+- Focus on both negative and positive test cases
 
 ## Accpeptance testing
 
@@ -133,7 +134,8 @@ Testing by end user. Testing with respect to user needs, requirements, and busin
 
 Sometimes known as business user testing
 
-- Testing by a legit person
+- Testing by a legit person/ customer
+- More focus on positive test cases
 
 # Test case design
 
@@ -199,11 +201,25 @@ BVA suggests that when picking test inputs from an equivalence partition, values
 - There are other strategies that can be used
 - Others - There are other strategies that can be used
 
-### Main ones to test
-1. Each valid input at least once
-2. Only one valid at a time
-
+### Main Heuristics to test
+1. Each valid input at least once - Each valid input must appear at least once in a positive test case.
+```
+Assume 'a' is valid
+- a, invalid, invalid // wrong - relying on just this alone, we will never know if there is a bug even though a is correct, as the invalid params will supersede the 'valid bug'
+- a, valid, valid // right - a must appear at least once for a successful positive test case
+```
 Note: It is better to have only one invalid test input per test entry (and the rest will be valid test inputs) for positive testing. This is so that we will know what is the cause of the assertTrue failure.
 
 
+2. No More Than One Invalid Input In A Test Case - only have one invalid input in a test case, the rest must be positive
+```
+============
+T T X
+T X T
+X T T
+============
+X: invalid input
+T: valid input
+```
 
+3. Mix - just mix them up to achieve a complete test

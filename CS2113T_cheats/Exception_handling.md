@@ -52,3 +52,8 @@ Syntax:
 logger.info("test");
 logger.severe("severe report");
 ```
+
+# Defensive programming
+Throw an error if a rule is not enforced.
+- Will not result in slower code
+

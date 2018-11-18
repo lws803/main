@@ -19,8 +19,8 @@ Biggest plus for implements is that a child class can implement from multiple in
 but cannot inherit from multiple classes/ abstract classes
 
 - java interfaces do not allow you to create private methods/ attributes unlike classes
-
 - Both interface and abstract classes **cannot be instantiated**
+- Interfaces are like components, it was made an interface so that other objects can implement them as well
 
 ### Abstract vs concrete classes
 #### Abstract class
@@ -32,6 +32,8 @@ it must have at least one abstract method. This rule does not apply to static me
 - Static members are allowed.
 - Abstract classes can extend other at most one abstract or concrete class and implement several interfaces.
 - Any class that does not implement all the abstract methods of it’s super class has to be an abstract class itself.
+- Can have associations (global variables) inside
+- Cannot be instantiated, we make use of this to create a class we dont want developers to instantiate (doesnt make sense to instantiate too)
 
 #### Concrete class
 A concrete class is complete in itself and can extend and can be extended by any class.
