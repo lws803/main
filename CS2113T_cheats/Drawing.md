@@ -1,9 +1,9 @@
 # UML Class diagrams
 A class diagram captures the structure of the software design but not the **behavior**.
 
-## Steps
+#### Steps
 1. Think of all the possible components eg. Data, File, etc etc
-2. See which one can be *abstracted* or turned into an *interface* then combine them using **interface dependency arrow**
+2. See which one can be *abstracted* or turned into an *interface* then combine them using **interface dependency arrow** `For abstract use {abstract}, interface use <<interface>>`
 3. Combine the rest using associations
 4. Fill in multiplicities *for both sides*
 5. Convert some of the associations to compositions
@@ -13,7 +13,7 @@ A class diagram captures the structure of the software design but not the **beha
 # UML Object diagram
 Used to model object structures.
 
-## Steps
+#### Steps
 1. Identify the objects (eg. [Betty:Person], [Adam:Person])
 2. Combine using associations
 3. Fill in multiplicities
@@ -24,7 +24,7 @@ Used to model object structures.
 # UML Sequence diagram
 A UML sequence diagram captures the interactions between multiple objects for a given scenario.
 
-## Steps
+#### Steps
 1. Identify classes/ objects
 2. Always start from person interacting with the GUI then Logic component
 3. Draw them out in sequence from left to right
@@ -40,7 +40,7 @@ A UML sequence diagram captures the interactions between multiple objects for a 
 # Architecture diagram
 The software architecture shows the overall organization of the system and can be viewed as a very high-level design.
 
-## Steps
+#### Steps
 1. Identify all the *main* components (eg. GUI, Logic, Data, Model)
 2. Draw arrow starting from *human* to the GUI and then go down the line to show the **interaction** of objects. (eg. double arrow from Logic to GUI to show that GUI gets updated by Logic and GUI also calls Logic methods)
 3. Box up whatever is internal to seperate components that belong to the outside of the architecture (eg. Physical Files, Human, Cloud)
@@ -50,19 +50,27 @@ The software architecture shows the overall organization of the system and can b
 A class diagram used to model objects in the problem domain. eg. snakes and ladders, we have objects such as board, snek, player, dice etc etc.  
 In this case we do not consider how the code should be like.
 
-## Differences
+### Differences
 
 - OO Domains do not show navigability (the arrow -->, which class knows about which class)
 - OO Domains is about the problem domain not the solution domain (eg. we rule out stuff like database, eventsCenter, modelManager classes, facade classes)
 
-## Similarities
+### Similarities
 - Both are UML diagrams
 
-## Steps to think of one
+#### Steps to think of one
 1. Think of all the entities used in the problem first eg. chessboard, squares, players, chess pieces
 2. Link them up based on what associates to what
 3. Draw the small solid triangle notation with description
 4. Fill in multiplicity
 5. Convert some of the associations to compositions eg. chessboard to squares
 
+# Activity diagram
+Software projects often involve workflows. Workflows define the flow in which a process or a set of tasks is executed.
 
+#### Steps
+1. Identify the actions (eg. Present idea, record idea, kill someone, frame someone)
+2. Organise the workflow from top to bottom
+3. Draw arrows from top to bottom taking note of starting point and end point (see notations for these in the textbook)
+4. Add in conditional blocks and their statements (diamond shape and [condition])
+5. Add **join** and **fork** nodes if necessary
