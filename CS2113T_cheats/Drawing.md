@@ -37,6 +37,13 @@ A UML sequence diagram captures the interactions between multiple objects for a 
 7. Fill in any conditionals
 8. Fill in any loops 
 
+# Architecture diagram
+The software architecture shows the overall organization of the system and can be viewed as a very high-level design.
+
+## Steps
+1. Identify all the *main* components (eg. GUI, Logic, Data, Model)
+2. Draw arrow starting from *human* to the GUI and then go down the line to show the **interaction** of objects. (eg. double arrow from Logic to GUI to show that GUI gets updated by Logic and GUI also calls Logic methods)
+3. Box up whatever is internal to seperate components that belong to the outside of the architecture (eg. Physical Files, Human, Cloud)
 
 # Object oriented domains
 
