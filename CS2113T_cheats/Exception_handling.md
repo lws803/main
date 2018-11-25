@@ -5,7 +5,7 @@
 Use assertions when you wish to verify a variable or method that could go wrong
 eg. assert(isValid(age)) - if this fks up, developer is at fault
 
-```Java
+```java
 // Sample syntax
 assert (var >= 0 && var < 2); // Ensures that the variable is within this, if not it will throw assertion error
 ```
@@ -16,7 +16,7 @@ Use this for methods that could go wrong due to external uncontrollable factors.
 - Look at most specific first for catch blocks
 
 Syntax:
-```Java
+```java
 // Sample throwable
 public void getJunk() throws InterruptedException {
     Thread.sleep(1000);
@@ -36,6 +36,8 @@ public static void main(String a[]){
     }
 }
 ```
+
+Note: Exceptions can inherit from a more general exception
 
 # Logger
 Logger types:

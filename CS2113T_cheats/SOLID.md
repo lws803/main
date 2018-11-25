@@ -94,6 +94,7 @@ void foo(Bar b) {
     g.doSomething();
 }
 ```
+`Note: A-->B-->C Does not mean A can access C. As C could be a private attribute in B`
 
 To reduce coupling, we do not want `foo` to be coupled to `Goo` while it is already coupled to `Bar`. Instead we should offload the method `doSomething()` to `Bar` or call `b.getGoo().doSomething()`
 

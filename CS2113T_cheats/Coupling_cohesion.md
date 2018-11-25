@@ -1,6 +1,6 @@
 # Coupling
 
-**Measure of number of dependencies between modules.** A module is coupled to another module when it depends on it.
+**Measure of number of dependencies/ associations between modules.** A module is coupled to another module when it depends on it.
 
 ## Types of Coupling
 1. **Content coupling** - one module modifies or relies on the internal workings of another module eg.
@@ -13,6 +13,8 @@ communication protocols
 6. **Subclass coupling** - a class inherits from another class.
 Note that a child class is coupled to the parent class but not the other way around.
 7. **Temporal coupling** - two actions are bundled together just because they happen to occur at the same time
+
+`Note: Coupling is not transistive, A-->B-->C does not imply A-->C coupling`
 
 # Cohesion
 Cohesion is a measure of how strongly-related and focused the various responsibilities of a component are.

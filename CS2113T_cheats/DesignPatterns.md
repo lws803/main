@@ -44,7 +44,7 @@ class Main {
 #### Cons:
 
 - The singleton object acts like a global variable that increases coupling across the code base.
-- In testing, it is difficult to replace Singleton objects with stubs (static methods cannot be overridden)
+- In testing, it is difficult to **replace** Singleton objects with stubs (static methods cannot be overridden)
 - In testing, singleton objects carry data from one test to another even when we want each test to be independent of the others.
 - Constructor is private, so it cannot be subclassed
 

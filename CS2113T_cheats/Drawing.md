@@ -45,6 +45,14 @@ The software architecture shows the overall organization of the system and can b
 2. Draw arrow starting from *human* to the GUI and then go down the line to show the **interaction** of objects. (eg. double arrow from Logic to GUI to show that GUI gets updated by Logic and GUI also calls Logic methods)
 3. Box up whatever is internal to seperate components that belong to the outside of the architecture (eg. Physical Files, Human, Cloud)
 
+```
+Some notes:
+
+Logic <-> GUI
+Model -> GUI
+
+Not: Model<-Logic<->GUI
+```
 # Object oriented domains
 
 A class diagram used to model objects in the problem domain. eg. snakes and ladders, we have objects such as board, snek, player, dice etc etc.  
