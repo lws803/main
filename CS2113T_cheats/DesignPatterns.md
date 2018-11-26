@@ -107,7 +107,8 @@ To tackle the issues with duplication of data. Eg. Firebase having two entries o
 #### Solution: 
 
 Create an occurence class which extends the main class. This occurence class will only store the data that is different from the multiple occurences of this data (eg. serial number) which we wanna create. Main class will store the duplicate data (eg. Name of book). 
-
+  
+eg. Multiple similar books, we abstract out the book information but we create an occurence class which extends this, this occurence class will store the serial number
 
 ## Combination of design patterns
 

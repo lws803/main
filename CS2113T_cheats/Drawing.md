@@ -52,6 +52,8 @@ Logic <-> GUI
 Model -> GUI
 
 Not: Model<-Logic<->GUI
+
+# Use dotted lines for dependency and solid lines for association
 ```
 # Object oriented domains
 
