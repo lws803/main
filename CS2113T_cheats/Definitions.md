@@ -220,6 +220,91 @@ Complete
 - No more than one invalid input in a test case
 - Use cases can be used for system testing and acceptance testing.
 
+### Tools - UML
+
+1. Class diagrams
+
+##### What it is:
+- UML class diagrams describe the structure (but not the behavior) of an OOP solution.
+
+##### Consists of:
+- Classes
+- Associations - a solid line, augmented with arrow-heads[navigatability], role labels, association labels, multiplicities
+- Dependencies - dependancies
+- Enumerations - `<<[enum]>>`
+- Class level members - underlines denote class-level attributes and variables
+- Association classes - shows a 3rd class that connects 2 elements
+- Composition - a `book` consists of `chapter` objects, when the `book` object is destroyed, its `chapter` objects are destroyed too.
+- Aggregation
+- Class Inheritance
+- Interfaces
+- Abstract Classes
+
+2. Sequence Diagrams
+
+##### What it is:
+- UML sequence diagrams captures the interactions between multiple objects for a given scenario.
+
+##### Typically Consists of:
+- Entities - Actors or compoenents involved in the interaction
+- Operation - Invoked (Solid arrows)
+- Activation bar - Period during which the instance is in control of the execution
+- Lifeline - shows that the instance is alive
+- Return value - returns control and possibly some return value (Dashed arrows)
+
+##### Operations:
+- Object creation
+- Object deletion
+- Loops
+- Self invocation - UML can show a method of an object calling another of its own methods
+- Alternative paths - UML uses `alt` frames to indicate alternative paths
+- Optional paths - UML uses `opt` frames to indicate optional paths
+- Parallel paths - UML uses `par` frames to indicate parallel paths
+- Reference frames - UML uses `ref` frames to allow a segment of the interaction to be omitted and shown as a separate sequence diagram. Reference frames help to break complicated sequence diagrams into `multiple parts` or `simply to omit details we are not interested in showing.`
+
+3. Object Diagrams
+
+##### What it is:
+- UML object diagrams shows an object structure at a given point of time.
+
+##### Typically Consists of:
+- `objectName:ClassName` ARE UNDERLINED
+- Objects - `objectName:ClassName` , no compartment for methods.
+- Associations - represented by a solid line
+
+4. Activity Diagrams
+
+##### What it is:
+- UML activity diagrams model workflows.
+
+##### Typically Consists of:
+- Action - represented with rectangles with rounded corners
+- control flow - shows the flow of control from one action to the next. Shown by drawing a lone with an arrow-head to show the direction of the flow.
+- Start node and end node - end node is a circle with a dot inside, start node is a filled in circle
+- Branch node and merge node - shows the start and end of alternate paths. Contains `GUARD CONDITIONS`: a boolean condition that should be true for execution to take that path. 
+- Fork node and Join node - Represented with bars. Set of parallel paths, execution along all parallel paths should be complete before the execution can start on the outgoing control flow of the join.
+- Rake - the rake notation is used to indicate that a part of the activity is given as a separate diagram.
+- Swimlanes - It is possible to partition an activity diagram to show who is doing which action. Such partitioned activity diagrams are sometimes called swimlane diagrams.
+
+5. Notes
+
+##### What it is:
+- UML notes can augment UML diagrams with additional information. literally a note that can be connected to an element.
+
+##### Typically Consists of:
+- Constraints - represented with curly braces
+
+6. Miscellaneous
+
+Object diagrams difference:
+- Methods are omitted
+- Multiplicities are omitted
+- Instance name may be shown
+- There is a `:` before the class name
+- Instance and class names are underlined
+
+[NOTE]
+Multiple object diagrams can correspond to a single class diagram.
 
 
 
