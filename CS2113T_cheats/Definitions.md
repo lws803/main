@@ -159,3 +159,68 @@ Complete
 `eg. JUnit, Tensorflow`
 18. Platforms - A platform provides a runtime environment for applications `eg. Java, iOS, Nodejs`
 19. 
+
+### Quality Assurance
+1. **Quality Assurance** - Validation + Verification
+2. **Validation** - Are we building the right system? - are requirements correct
+3. **Verification** - Are we building the system correctly? - are requirements implemented correctly
+4. **Code review** - systematic examination code with the intention of finding where the code can be improved.
+
+##### Consists of:
+- **Pair Programming**: when two programmers work on the same code at the same time, there is an implicit review of the code by the other member of the pair.
+- **Pull Request reviews**: GitHub and BitBucket allows the new code to be proposed as Pull Requests and provides the ability for others to review the code in the PR.
+- **Formal Inspections**: uses mathematical techniques to prove the correctness of a program and can be used to prove the absence of errors.
+
+5. **Static Analysis** - analysis of code without actually executing the code. `e.g. CheckStyle, PMD, FindBugs for Java`
+6. **Linters** - subset of static analyzers that specifically aim to locate areas where the code can be made `cleaner`.
+7. **Testing** - operating a system or component under specified conditions, observing or recording the results, and making an evaluation
+8. **Test case** - specifies how to perform a test. At a minimum, it specifies the input to the software under test (SUT) and the expected behavior.
+9. **Failure** - caused by a defect (or a bug).
+10. **Testability** - Indication of how easy it is to test an SUT
+11. **Unit Testing** - testing individual units (methods, classes, subsystems, ...) to ensure each piece works correctly.
+12. **Stubs** - can isolate the SUT from its dependencies to create a pure unit test. It has the same interface as the component it replaces, but its implementation is so simple that it is unlikely to have any bugs. It mimics the responses of the component, but only for the a limited set of predetermined inputs. Other examples are `mocks, fakes, dummies, spies`.
+13. **Integration Testing** - testing whether different parts of the software work together (i.e. integrates) as expected.Integration tests are run using the actual dependencies, not any stubs. 
+14. **System Testing** - take the whole system and test it against the system specification. They are based on the specified external behavior of the system and can test non-functional requirements too `e.g. Performance Testing, Load Testing, Security Testing`. System testing is typically more extensive than acceptance testing.
+15. **Alpha Testing** - performed by the users, under controlled conditions set by the software development team.
+16. **Beta Testing** - performed by a selected subset of target users of the system in their natural work setting.
+17. **Dog fooding** - creators of a product use their own product to test the product.
+18. **Developer testing** - testing done by the developers themselves
+19. **Scripted testing** - write a set of test cases based on the expected behavior of the SUT, and then perform testing based on that set of test cases.
+20. **Exploratory testing** - devise test cases on-the-fly, creating new test cases based on the results of the past test cases. Also known as `eactive testing, error guessing technique, attack-based testing, and bug hunting.`
+21. **Acceptance testing** - test the delivered system to ensure it meets the user requirements.
+22. **Regression** - code modifications may result in some unintended and undesirable effects on the system.
+23. **Regression testing** - re-testing the software to detect regressions.
+24. **Test Drivers** - code that ‘drives’ the SUT for the purpose of testing.
+25. **Test Automation Tools** - tool for automated testing of Java programs `e.g. JUnit`. GUI Testing (which is harder than CLI testing) can also be automated using automated tools such as `TestFx, VisualStudio, Selenium`.
+26. **Test coverage** - metric used to measure the extent to which testing exercises the code.
+
+##### Consists of:
+- **Function/method coverage** - based on functions executed.
+- **Statement coverage** - number of line of code executed
+- **Decision/branch coverage** - based on the decision points exercised. Code is completely test if 100% branch coverage is achieved.
+- **Condition coverage** - based on the boolean sub-expressions, each evaluated to both true and false with different test cases. 
+- **Path coverage** - measures coverage in terms of possible paths through a given part of the code executed. 100% path coverage means all possible paths have been executed.
+- **Entry/Exit coverage** - measures coverage in terms of possible calls to and exits from the operations in the SUT.
+
+27. **Coverage analysis tools** - measures test coverage of a piece of code. 
+28. **Dependency Injection** - process of 'injecting' objects to replace current dependencies with a different object. Polymorphism is used to implement dependency injection. 
+29. **Test Driven Development (TDD)** - writing the tests before writing the SUT, while evolving functionality and tests in small increments.
+30. **Effective tests** - finds a high percentage of existing bugs.
+31. **Efficient tests** - has a high rate of success (bugs found/test cases).
+32. **Positive Test case** - test is designed to produce an expected/valid behavior.
+33. **Negative Test case** - designed to produce a behavior that indicates an invalid/unexpected situation, such as an error message.
+34. **Black box testing** - test cases are designed exclusively based on the SUT’s specified external behavior.
+35. **White/Glass box testing** -  test cases are designed based on what is known about the SUT’s implementation, i.e. the code.
+36. **Grey box testing** - test case design uses some important information about the implementation. 
+37. **Equivalence partitions** - a group of test inputs that are likely to be processed by the SUT in the same way. Usually derived from the specifications of the SUT. 
+38. **Boundary Value Analysis** - test case design heuristic that is based on the observation that bugs often result from incorrect handling of boundaries of equivalence partitions. It states that values near boundaries (i.e. boundary values) are more likely to find bugs: one value from the boundary, one value just below the boundary, and one value just above the boundary.
+
+##### Common test case heuristics
+- Each valid input at least once in a positive test case
+- No more than one invalid input in a test case
+- Use cases can be used for system testing and acceptance testing.
+
+
+
+
+
