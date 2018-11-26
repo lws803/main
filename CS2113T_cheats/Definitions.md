@@ -158,7 +158,6 @@ Complete
 17. Frameworks - The overall structure and execution flow of a specific category of software systems can be very similar. The similarity is an opportunity to reuse at a high scale `Note: in a framework, you design the code for the framework to RUN your code, Hollywood principle`
 `eg. JUnit, Tensorflow`
 18. Platforms - A platform provides a runtime environment for applications `eg. Java, iOS, Nodejs`
-19. 
 
 ### Quality Assurance
 1. **Quality Assurance** - Validation + Verification
