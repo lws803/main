@@ -219,6 +219,77 @@ Complete
 - No more than one invalid input in a test case
 - Use cases can be used for system testing and acceptance testing.
 
+### Project Management
+1. **Revision Control** - process of managing multiple versions of a piece of information.
+2. **Revision Control Software (RCS)** - software tools that automate the process of Revision Control i.e. managing revisions of software artifacts.
+3. **Revision** - a state of a piece of information at a specific time that is a result of some changes to it.
+4. **Repository** - the database of the history of a directory being tracked by an RCS software `e.g. Git`.
+5. **Commit** - saves a snapshot of the current state of the tracked files in the revision control history.
+6. **Stage** - lets you choose the specific changes to commit
+7. **Tag** - Allows you to tag a specific commit with a easily identifiable name
+8. **Ignore** - RCS which ignore the changes made to these files
+9. **Diff** - Can check what changed between two points in history (i.e. difference between two commits)
+10. **Checkout** - Restores the state of the working directory at a commit in the past
+11. **Remote repo** - Copies of a repo that are hosted on remote computers
+12. **Clone** - allows you to clone a remote repo onto your computer
+13. **Push** - copies the new commits from your local computer to the remote repo
+14. **Pull** - syncs your local repo with the latest changes to the remote repo
+15. **Fork** - creates a remote copy of a remote repo
+16. **Pull Request** - mechanism for contributing code to a remote repo
+17. **Branching** - process of evolving mutiple versions of the software in parallel
+18. **Merge** - process of merging two branches together
+19. **Merge conflicts** - occur when you try to merge two branches that had changed the same part of the code
+20. **Centralized RCS (CRCS)** - uses a central remote repo that is shared by the team. 
+21. **Distributed RCS (DRCS)** - allows multiple remote repos and pulling and pushing can be done among them in arbitrary ways.
+22. **Forking workflow** - the 'official' version of the software is kept in a remote repo designated as the 'main repo'. All team members fork the main repo and create pull requests from their fork to the main repo.
+23. **Feature Branch workflow** - similar to forking workflow except there are no forks. Everyone is pushing/pulling from the same remote repo.
+24. **Centralized workflow** - similar to the feature branch workflow except all changes are done in the master branch.
+25. **Work Breakdown Structure (WBS)** - depicts information about tasks and their details in terms of subtasks.
+26. **Milestone** - the end of a stage which indicates a significant progress.
+27. **Buffer** - time set aside to absorb any unforeseen delays. However, do not inflate task estimates to create hidden buffers; have explicit buffers instead
+28. **Issue trackers** - are commonly used to track task assignment and progress.
+29. **GANTT chart** - 2-D bar-chart, drawn as time vs tasks.
+30. **PERT (Programme Evaluation Review Technique) chart** - uses a graphical technique to show the order/sequence of tasks.
+31. **Critical path** - path in which any delay can directly affect the project duration. It is important to ensure tasks on the critical path are completed on time.
+32. **Egoless team** - every team member is equal in terms of responsibility and accountability.
+33. **Chief-programmer** - there is a single authoritative figure, the chief programmer.
+34. **Strict-hierarchy** - a strictly defined organization among the team members.
+35. **Software Development Life Cycle (SLDC)** - different stages of software development such as requirements, analysis, design, implementation and testing.
+36. **Sequential Model** - called the waterfall model, models software development as a linear process, in which the project is seen as progressing steadily in one direction through the development stages. 
+
+	- When one stage of the process is completed, it should produce some artifacts to be used in the next stage.
+	- This could be a useful model when the problem statement that is well-understood and stable.
+	- Major problem with this model is that requirements of a real-world project are rarely well-understood at the beginning and keep changing over time.
+
+37. **Iterative Model** - advocates having several iterations of SDLC.
+	
+	- Each of the iterations produces a new version of the product.
+	- Can take a breadth-first or a depth-first approach to iteration planning. Most projects use a mixture of breadth-first and depth-first iterations.
+
+38. **Breadth first** - an iteration evolves all major components in parallel.
+39. **Depth first** - an iteration focuses on fleshing out only some components.
+40. **Agile model** - Requirements are prioritized based on the needs of the user, are clarified regularly (at times almost on a daily basis) with the entire project team, and are factored into the development schedule as appropriate. Two agile processes today are `XP` and `Scrum`
+41. **XP** - Extreme Programming (XP) stresses customer satisfaction. Instead of delivering everything you could possibly want on some date far in the future, this process delivers the software you need as you need it.
+
+##### Consists of:
+- Teamwork
+- Communication, simplicity, feedback, respect, and courage
+- Has a set of simple rules
+
+42. **Scrum** - process skeleton that contains sets of practices and predefined roles.
+
+##### Consists of:
+- The Scrum Master, who maintains the processes (typically in lieu of a project manager)
+- The Product Owner, who represents the stakeholders and the business
+- The Team, a cross-functional group who do the actual analysis, design, implementation, testing, etc.
+- Sprints: basic unit of development in Scrum
+- Daily sprint meetings
+- Each sprint results in a potentially deliverable product feature
+- A key principle of Scrum is its recognition that during a project the customers can change their minds about what they want and need
+
+43. **Unified process** - consists of four phases: inception, elaboration, construction and transition. It is a flexible and customizable process model framework rather than a single fixed process.
+44. **Capability Maturity Model Integration (CMMI)** - provides organizations with the essential elements of effective processes, which will improve their performance.
+
 ### Tools - UML
 
 1. Class diagrams
@@ -317,5 +388,4 @@ Multiple object diagrams can correspond to a single class diagram.
 8. You Aren't Gonna Need It (YAGNI) principle - Do not add code because you might need it in the future
 9. Don't Repeat Yourself (DRY) principle - Every piece of knowledge must have a single, unambiguous, authoritative representation within a system
 10. Brook's Law - Adding people to a late project will make it later.
-
-
+11. SOLID Principles - Single responsibility principle, Open-closed principle, Liskov Substitution Principle, Interface Segregation Principle, Dependancy Inversion Principle
