@@ -380,7 +380,7 @@ Multiple object diagrams can correspond to a single class diagram.
 
 1. Single responsibility principle - a class should have one, and only one, reason to change.
 2. Open-closed principle - a module should be open for extention but closed for modification. That is, modules should be written so that they can be extended, without requiring them to be modified.
-3. Liskov Substitution Principle - Derived classes must be substitutable for their base classes.
+3. Liskov Substitution Principle - Derived classes must be substitutable for their base classes WITHOUT NEGATIVE SIDE EFFECTS.
 4. Interface Segregation Principle - No client should be forced to depend on methods it does not use.
 5. Dependancy Inversion Principle - 1. High-level modules should not depend on low-level modules, both should depend on abstractions. 2. Abstractions should not depend on details. Details should depend on abstractions.
 6. Seperation of Concerns Principle - To achieve better modularity, separate the code into distinct sections, such that each section addresses a separate concern.
